@@ -30,6 +30,7 @@ class IndexView(View):
 
     @csrf_exempt
     def get(self, request):
+        print("wx get request")
         wechat = MyWechat.get_basic_obj(self.request)
         # 检验合法性
         signature = request.GET.get('signature')
