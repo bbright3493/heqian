@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'heqian.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-use_local_db = 1
+use_local_db = 0
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 if use_local_db:
@@ -100,8 +100,8 @@ else:
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'heqian',
             'USER': 'root',
-            'PASSWORD': 'bb12345',
-            'HOST': '47.92.92.207',
+            'PASSWORD': 'heqian',
+            'HOST': '39.107.226.248',
             'PORT': 3306,
         }
     }
