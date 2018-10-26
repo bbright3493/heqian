@@ -54,24 +54,24 @@ class MyWechat(object):
         )
 
         wechat = WechatBasic(conf=conf)
-        access_token = wechat.get_access_token()
-        print ("current access_token:", access_token)
-        # 将access_token重新更新到db
-        new_token = AccessToken()
-        new_token.token = access_token["access_token"]
-        new_token.expires = access_token["access_token_expires_at"]
-        if token_id:
-            new_token.id = token_id
-        new_token.save()
-
-        jsapi_ticket = wechat.get_jsapi_ticket()
-        print ("current jsapi_ticket:", jsapi_ticket)
-        # 将jsapi_ticket重新更新到db
-        new_ticket = JsapiTicket()
-        new_ticket.ticket = jsapi_ticket["jsapi_ticket"]
-        new_ticket.expires = jsapi_ticket["jsapi_ticket_expires_at"]
-        if ticket_id:
-            new_ticket.id = ticket_id
-        new_ticket.save()
+        # access_token = wechat.get_access_token()
+        # print ("current access_token:", access_token)
+        # # 将access_token重新更新到db
+        # new_token = AccessToken()
+        # new_token.token = access_token["access_token"]
+        # new_token.expires = access_token["access_token_expires_at"]
+        # if token_id:
+        #     new_token.id = token_id
+        # new_token.save()
+        #
+        # jsapi_ticket = wechat.get_jsapi_ticket()
+        # print ("current jsapi_ticket:", jsapi_ticket)
+        # # 将jsapi_ticket重新更新到db
+        # new_ticket = JsapiTicket()
+        # new_ticket.ticket = jsapi_ticket["jsapi_ticket"]
+        # new_ticket.expires = jsapi_ticket["jsapi_ticket_expires_at"]
+        # if ticket_id:
+        #     new_ticket.id = ticket_id
+        # new_ticket.save()
 
         return wechat
