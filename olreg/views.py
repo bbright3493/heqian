@@ -87,8 +87,8 @@ class IndexView(View):
 
 
 class CreateMenuView(View):
-    @superuser_required(login_url=LOGIN_URL)
-    @login_required(login_url=LOGIN_URL)
+    # @superuser_required(login_url=LOGIN_URL)
+    # @login_required(login_url=LOGIN_URL)
     def get(self, request):
         wechat = MyWechat.get_basic_obj(request)
         wechat.create_menu(settings.MENU_DATA)
