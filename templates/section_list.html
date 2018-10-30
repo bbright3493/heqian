@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+		<title></title>
+	</head>
+	<body>
+		<div class="warp plr30 pt30 bg-fff6cf">
+			<!--搜索-->
+			<a href="科室列表搜索页.html" class="list-search plr20 mzub mzub-ac mb30 bg-e4d2ac">
+				<i class="iconfont icon-sousuo fz24 c33 mr10"></i>
+				<span class="c-606266 fz14">请输入科室或医生姓名查询</span>
+			</a>
+			<ul class="department-list">
+				<li class="bb ptb10 mzub mzub-ac">
+					<p class="mzub-f1 fz24 c-504d3e">科室一</p>
+					<i class="iconfont icon-next fz24 c-504d3e"></i>
+				</li>
+			</ul>
+			<p class="tx-c c-504d3e fz24">暂无数据~~~</p>
+		</div>
+	</body>
+
+</html>

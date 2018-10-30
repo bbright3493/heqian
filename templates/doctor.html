@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="warp bg-fff6cf">
+			<div class="doc-list">
+				<ul>
+					<li class="mzub mzub-ac ptb10 bb plr30">
+						<div class="doc-img mr20">
+							<img src="" alt="" />
+						</div>
+						<div class="mzub-f1 fz22">
+							<p class="mb10">张玉</p>
+							<p class="">医生</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="doc-scheduling mzub mzub-pac mb20">
+				<p class="mzub-f1 doc-scheduling-tab active ptb20 tx-c fz22 c-606266">排班</p>
+				<p class="mzub-f1 doc-scheduling-tab ptb20 tx-c fz22 c-606266">介绍</p>
+			</div>
+			<div class="doc-scheduling-container active">
+ 			<div class="week-day-box bb ptb10">
+				<ul class="mzub mzub-pac">
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac active">24</p>
+					</li>
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac">24</p>
+					</li>
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac">24</p>
+					</li>
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac">24</p>
+					</li>
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac">24</p>
+					</li>
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac">24</p>
+					</li>
+					<li class="mzub-f1 tx-c fz22 c-606266">
+						<p class="week-day mb10">三</p>
+						<p class="week-data mzub mzub-pac">24</p>
+					</li>
+				</ul>
+			</div>
+			<div class="doc-list">
+				<ul>
+					<li onclick="goInfo()"  class="mzub mzub-ac ptb10 bb plr30">
+						<div class="appointment mzub mzub-pac fz12 c-606266 mr20">可预约</div>
+						<div class="mzub-f1">
+							<p class="fz22 c-606266">上午</p>
+						</div>
+						<div class="residue-num mzub mzub-pac cff fz18 mr10">13.00元</div>
+						<i class="iconfont icon-next fz24 c33"></i>
+						</li>
+				</ul>
+			</div>
+			</div>
+			<div class="doc-scheduling-container">
+				<p class="tx-c c66 fz24">介绍</p>
+			</div>
+			<p class="tx-c c66 fz24">暂无数据~~~</p>
+		</div>
+	</body>
+<script type="text/javascript">
+	$('.doc-scheduling-tab').click(function() {
+			var index = $(this).index();
+			console.log($(this))
+			$('.doc-scheduling-container').eq(index).addClass('active').siblings().removeClass('active');
+			$(this).addClass('active').siblings().removeClass('active');
+		})
+	function goInfo(){
+			console.log(123)
+			window.location.href='确认挂号信息.html'
+		};
+</script>
+</html>

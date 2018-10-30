@@ -251,6 +251,18 @@ class AddKf(View):
         pass
 
 
+class SectionListView(View):
+    """
+    科室列表
+    """
+    def get(self, request):
+        #查询科室 渲染科室列表页
+        return render(request, "section_list.html", locals())
+
+
+
+
+
 
 
 

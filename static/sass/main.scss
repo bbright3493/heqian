@@ -1,0 +1,140 @@
+@charset "UTF-8";
+@import 'reset';
+@import 'grid';
+@import 'mCommon';
+.warp{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+.list-search {
+    border-radius: vw(30);
+//  border: 1px solid #dcdfe6;
+    height: vw(60);
+   background-color: #e4d2ac;
+    overflow: hidden;
+    input {
+        display: block;
+        height: 100%;
+        width: 100%;
+       background-color: #e4d2ac;
+    }
+}
+
+.c-606266 {
+    color: #606266;
+}
+
+.scheduling-box {
+    border-radius: vw(4);
+    border: 1px solid #e4d2ac;
+    overflow: hidden;
+    .scheduling-tab {
+        color: #999893;
+        &.active {
+            color: #4d4c4a;
+            background-color: #e4d2ac;
+        }
+    }
+}
+.c-999893{
+    color: #999893;
+}
+.week-data {
+    width: vw(40);
+    height: vw(40);
+    margin: 0 auto;
+    border-radius: 100%;
+    &.active{
+        color: #ffffff;
+         background-color: #874a47;
+    }
+   
+}
+.doc-img{
+    width: vw(60);
+    height: vw(100);
+    overflow: hidden;
+    border-radius: vw(8);
+    background-color: #eeeeee;
+    img{
+        display: block;width: 100%;min-height: 100%;
+    }
+}
+.residue-num{
+    border-radius: vw(4);
+    background-color: #874a47;
+    padding: 0 vw(5);
+}
+.doc-scheduling-tab{
+    position: relative;
+    transition: 0.3s;
+    &.active{
+       color: #874a47;
+       &:after{
+           position: absolute;
+           content: '';
+           left: 0;
+           bottom: 0;
+           right: 0;
+           height: 1px;
+           background-color: #874a47;
+       }
+    }
+}
+.appointment{
+   width: vw(100);
+    height: vw(100);
+    overflow: hidden;
+    border-radius: vw(60);
+    border: 1px solid #874a47;
+}
+.bg-e4d2ac{
+    background-color: #e4d2ac;
+}
+.bg-fff6cf{
+    background-color: #fff6cf;
+}
+.bb-e1d3ac{
+    border-bottom: 1px solid #e1d3ac;
+}
+.c-504d3e{
+    color: #504d3e;
+}
+.c-874a47{
+    color: #874a47;
+}
+.c-834c45{
+    color: #834c45;
+}
+.tx-r{
+    text-align: right;
+}
+.bg-f4e5bc{
+    background: #f4e5bc;
+}
+.c-da9548{
+    color: #da9548;
+}
+.doc-list{
+    
+   li:last-child{
+       border-bottom: none;
+   }
+}
+.sureBtn{
+    border-radius: vw(4);
+    background-color: #874a47;
+    margin: vw(100) vw(30) 0;
+    color: #f2ddc2;
+}
+.week-day-box,.doc-scheduling-container{
+    display: none;
+    &.active{
+        display: block;
+    }
+}
+

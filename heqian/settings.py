@@ -148,9 +148,14 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+# 静态文件目录配置
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 # 上传文件设置
-MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 微信配置
 APPID = 'wx577571290c3830d3'
@@ -158,11 +163,12 @@ APPSECRET = '1be8a7e3173b1bc54f51d162b65d8fff'
 TOKEN = "heqianyiliao"
 ENCRYPT_MODE = "normal"
 ENCODING_AES_KEY = "7cL65X3v9cjUAnksm3DfdONajnHLKBWCkD0ky9n7B6f"
+HOST = "www.52ky.net"
 
 #待修改
 PAY_KEY = "RIKrrMPqEKaGj23t5YvyNujZ0LaiuBzA"
 MCHID = "1470404202"
-HOST = "www.5ihy.com"
+
 
 
 # 微信公众号菜单数据
@@ -175,7 +181,7 @@ MENU_DATA = {
                         {
                             'type': 'view',
                             'name': '在线挂号',
-                            'url': MENU_URL % ('http://%s/wx/online_register/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/section_list/' % HOST)
                         },{
                             'type': 'view',
                             'name': '挂号记录',

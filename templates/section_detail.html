@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div class="warp bg-fff6cf">
+			<div class="data-title mzub mzub-ac ptb10 bb plr30">
+				<p class="fz24 c33 mzub-f1">2018-10-24</p>
+				<div class="mzub mzub-pac fz20 scheduling-box">
+					<p class="scheduling-tab active mzub-f1 plr10 tx-c plr10 ptb10">日期排班</p>
+					<p class="scheduling-tab mzub-f1 all-doc plr10 tx-c plr10 ptb10">全部医生</p>
+				</div>
+			</div>
+			<div class="scheduling-container">
+				<div class="week-day-box active bb ptb10">
+					<ul class="mzub mzub-pac">
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac active">24</p>
+						</li>
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac">24</p>
+						</li>
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac">24</p>
+						</li>
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac">24</p>
+						</li>
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac">24</p>
+						</li>
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac">24</p>
+						</li>
+						<li class="mzub-f1 tx-c fz22 c-999893">
+							<p class="week-day mb10">三</p>
+							<p class="week-data mzub mzub-pac">24</p>
+						</li>
+					</ul>
+				</div>
+				<div class="doc-list">
+					<ul>
+						<li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30">
+							<div class="doc-img mr20">
+								<img src="" alt="" />
+							</div>
+							<div class="mzub-f1 fz22">
+								<p class="mb10 c66">张玉</p>
+								<p class="c-999893">医生</p>
+							</div>
+							<div class="residue-num mzub mzub-pac cff fz18 mr10">剩10</div>
+							<i class="iconfont icon-next fz24 c33"></i>
+							</li>
+					</ul>
+				</div>
+			</div>
+			<p class="tx-c c-504d3e fz24">暂无数据~~~</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('.scheduling-tab').click(function() {
+			var index = $(this).index();
+			if(index == 0){
+				$('.week-day-box').addClass('active')
+			}else{
+				$('.week-day-box').removeClass('active')
+			}
+			$(this).addClass('active').siblings().removeClass('active')
+		})
+		function goDoc(){
+			console.log(123)
+			window.location.href='医生排班.html'
+		};
+	</script>
+
+</html>
