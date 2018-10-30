@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # author: bb
-# date: 2017/4/10
+# date: 2018/10/25
 
 from __future__ import unicode_literals
 
@@ -24,4 +24,9 @@ from django.conf.urls import include, url
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='wechat_index'),
     #url(r'^MP_verify_ffcYyAuLnwzBnn58.txt$', views.MP_verify_ffcYyAuLnwzBnn58, name='MP_verify_ffcYyAuLnwzBnn58'),
+    url(r'^create_menu/$', views.CreateMenuView.as_view(), name='wechat_create_menu'),
+    url(r'^MP_verify_aUoP8juHMf0Ow1it.txt$', views.MP_verify_aUoP8juHMf0Ow1it.as_view(), name='MP_verify_aUoP8juHMf0Ow1it'),
+    url(r'^recharge/$', views.Recharge.as_view(), name='recharge'),
+    url(r'^recharge/unifiedorder/$', views.Recharge_unifiedorder.as_view(), name='recharge_unifiedorder'),
+    url(r'^recharge/payback/$', views.RechargePayback.as_view(), name='recharge_payback'),
 ]

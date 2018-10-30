@@ -163,3 +163,23 @@ ENCODING_AES_KEY = "7cL65X3v9cjUAnksm3DfdONajnHLKBWCkD0ky9n7B6f"
 PAY_KEY = "RIKrrMPqEKaGj23t5YvyNujZ0LaiuBzA"
 MCHID = "1470404202"
 HOST = "www.5ihy.com"
+
+
+# 微信公众号菜单数据
+MENU_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx577571290c3830d3&redirect_uri=%s&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
+MENU_DATA = {
+            'button':[
+                {
+                    'name': '看病挂号',
+                    'sub_button': [
+                        {
+                            'type': 'view',
+                            'name': '在线挂号',
+                            'url': MENU_URL % ('http://%s/wx/online_register/' % HOST)
+                        },{
+                            'type': 'view',
+                            'name': '挂号记录',
+                            'url': MENU_URL % ('http://%s/wx/history_register/' % HOST)
+                        }]
+                }
+            ]}
