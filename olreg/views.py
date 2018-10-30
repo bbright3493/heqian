@@ -99,7 +99,7 @@ class CreateMenuView(View):
 
 class MP_verify_aUoP8juHMf0Ow1it(View):
     def get(self, request):
-        return HttpResponse("aUoP8juHMf0Ow1i")
+        return HttpResponse("aUoP8juHMf0Ow1it")
 
 
 # class Login(View):
