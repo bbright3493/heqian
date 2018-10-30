@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class OlregConfig(AppConfig):
-    name = 'olreg'
+    name = '医院和医生信息'
+    verbose_name = name

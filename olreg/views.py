@@ -26,8 +26,9 @@ from user.mydecorator import superuser_required
 from utils.tool import auth_openid, auth_url
 from user.models import User
 from utils.tool import sync_userinfo
-from olreg.models import RegRecord
+from olreg.models import *
 from utils.wzhifuSDK import UnifiedOrder_pub, JsApi_pub, WxPayConf_pub, Common_util_pub
+
 
 
 LOGIN_URL = settings.MENU_URL % ("http://%s/wx/login/" % settings.HOST)
@@ -257,6 +258,7 @@ class SectionListView(View):
     """
     def get(self, request):
         #查询科室 渲染科室列表页
+        sections = SectionInfo.objects.all()
         return render(request, "section_list.html", locals())
 
 
