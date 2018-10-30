@@ -153,7 +153,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = '/home/workspace/heqian/heqian/static'
+STATIC_ROOT = '/home/workspace/heqian/heqian/static1'
 
 # 上传文件设置
 MEDIA_URL = '/media/'
