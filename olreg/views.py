@@ -53,6 +53,7 @@ class IndexView(View):
     @csrf_exempt
     def post(self, request):
         # POST 解析本次请求的 XML 数据
+        print("wx post request")
         wechat = MyWechat.get_basic_obj(self.request)
         try:
             wechat.parse_data(data=request.body)
