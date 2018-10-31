@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import User
+import django.utils.timezone as timezone
 # Create your models here.
 
 class AccessToken(models.Model):
@@ -81,6 +82,7 @@ class DoctorInfo(models.Model):
     name = models.CharField(max_length=20, verbose_name='医生姓名')
     content = models.CharField(max_length=2000, verbose_name='医生介绍')
     price = models.IntegerField(default=50, verbose_name='挂号价格')
+    image = models.ImageField(upload_to="doctor/%Y/%m", verbose_name=u"医生头像", max_length=200, default='')
 
     def __str__(self):
         return str(self.name)
@@ -102,5 +104,23 @@ class DoctorSection(models.Model):
 
     class Meta:
         verbose_name = '医生科室关系'
+        verbose_name_plural = verbose_name
+
+
+class Schedule(models.Model):
+    """
+    排班信息
+    """
+    date = models.DateTimeField(verbose_name='排班日期', default = timezone.now)
+    section = models.ForeignKey(SectionInfo, verbose_name='排班科室')
+    doctor = models.ForeignKey(DoctorInfo, verbose_name='排班医生')
+    register_num = models.IntegerField(default=50, verbose_name='预留号数')
+    leave_num = models.IntegerField(default=50, verbose_name='剩余号数')
+
+    def __str__(self):
+        return  '%s-%s'%(self.doctor.name, str(self.date))
+
+    class Meta:
+        verbose_name = '排班信息'
         verbose_name_plural = verbose_name
 

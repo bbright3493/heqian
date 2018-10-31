@@ -7,4 +7,5 @@ admin.site.register(HospitalArea)
 admin.site.register(SectionInfo)
 admin.site.register(DoctorInfo)
 admin.site.register(DoctorSection)
+admin.site.register(Schedule)
 

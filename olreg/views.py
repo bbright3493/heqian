@@ -283,6 +283,10 @@ class DoctorListView(View):
         #获取当前日期
         date = datetime.datetime.now()
 
+        str_date = date.strftime('%Y-%m-%d')
+
+        schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year, section=section)
+
         dates = []
         #生成 周和日期列表
         for i in range(7):
@@ -297,7 +301,9 @@ class DoctorListView(View):
 
             date = date + datetime.timedelta(days=1)
 
-        doctors = DoctorInfo.objects.filter(doctorsection__section=section)
+        #doctors = DoctorInfo.objects.filter(doctorsection__section=section)
+
+
 
         return render(request, "section_detail.html", locals())
 
