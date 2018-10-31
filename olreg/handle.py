@@ -5,7 +5,7 @@
 
 
 from user.models import User
-#from utils.tool import sync_userinfo
+from utils.tool import sync_userinfo
 from django.conf import settings
 
 
@@ -116,25 +116,25 @@ class WechatHanle(object):
         关注事件处理器
         :return: 
         """
-        # 根据openid获取到用户信息，并将获取到的信息存取到数据库
-        # user_info = self.wechat.get_user_info(self.openid)
-        # """
-        # {u'province': u'\u56db\u5ddd', u'city': u'\u6210\u90fd', u'subscribe_time': 1494671028, u'headimgurl': u'http://wx.qlogo.cn/mmopen/7ayUWiclWf9eCDlQ1SicCBBYWDpJ7RBVWx8PAyYCBfFaD5m0R5u9h7ZMpibzod3xZTzqZr6QfOEjrxu4CvYqHw4wILlQgXjn1pt/0', u'language': u'zh_CN', u'openid': u'ooRC71MdmiP-H-aKy4dvXnYEMUPo', u'country': u'\u4e2d\u56fd', u'tagid_list': [], u'remark': u'', u'sex': 2, u'subscribe': 1, u'nickname': u'\u7389\u5170', u'groupid': 0}
-        # """
-        # #print "获取到用户信息：", user_info
-        # try:
-        #     User.objects.get(openid=user_info["openid"])
-        # except User.DoesNotExist:
-        #     sync_userinfo(self.wechat, self.openid)
-        # response = self.wechat.response_news([
-        #     {
-        #         'title': '想知道怎么使用Somi宠物项圈吗？快来看看吧！',
-        #         'picurl': 'http://www.5ihy.com/static/img/wechat/headPic.jpg',
-        #         'url': 'http://' + settings.HOST + '/wx/device/bind_remark/'
-        #     }
-        # ])
-        # return response
-        pass
+        #根据openid获取到用户信息，并将获取到的信息存取到数据库
+        user_info = self.wechat.get_user_info(self.openid)
+        """
+        {u'province': u'\u56db\u5ddd', u'city': u'\u6210\u90fd', u'subscribe_time': 1494671028, u'headimgurl': u'http://wx.qlogo.cn/mmopen/7ayUWiclWf9eCDlQ1SicCBBYWDpJ7RBVWx8PAyYCBfFaD5m0R5u9h7ZMpibzod3xZTzqZr6QfOEjrxu4CvYqHw4wILlQgXjn1pt/0', u'language': u'zh_CN', u'openid': u'ooRC71MdmiP-H-aKy4dvXnYEMUPo', u'country': u'\u4e2d\u56fd', u'tagid_list': [], u'remark': u'', u'sex': 2, u'subscribe': 1, u'nickname': u'\u7389\u5170', u'groupid': 0}
+        """
+        #print "获取到用户信息：", user_info
+        try:
+            User.objects.get(openid=user_info["openid"])
+        except User.DoesNotExist:
+            sync_userinfo(self.wechat, self.openid)
+        response = self.wechat.response_news([
+            {
+                'title': '欢迎来到禾乾医疗',
+                'picurl': 'http://www.52ky.net/static/img/wechat/headPic.jpg',
+                'url': 'http://' + settings.HOST + '/wx/section_list/'
+            }
+        ])
+        return response
+
 
     def _unsubscribe_handle(self):
         """
