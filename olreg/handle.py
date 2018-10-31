@@ -16,6 +16,7 @@ class WechatHanle(object):
     def __init__(self, wechat):
         self.wechat = wechat
         self.openid = wechat.message.source  # 对应于 XML 中的 FromUserName , 相当于openid
+        print(self.openid)
 
     def text_handle(self):
         """
@@ -128,7 +129,7 @@ class WechatHanle(object):
             sync_userinfo(self.wechat, self.openid)
         response = self.wechat.response_news([
             {
-                'title': '欢迎来到禾乾医疗',
+                'title': '欢迎来到禾乾医疗 点我快速挂号',
                 'picurl': 'http://www.52ky.net/static/img/wechat/headPic.jpg',
                 'url': 'http://' + settings.HOST + '/wx/section_list/'
             }
