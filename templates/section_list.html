@@ -24,10 +24,12 @@
 			<ul class="department-list">
                 {% for section in sections %}
 				<li class="bb ptb10 mzub mzub-ac">
-                    <a href="{% url 'doctor_list' section.id %}">
-                        <p class="mzub-f1 fz24 c-504d3e">{{ section.name }}</p>
+
+                        <p class="mzub-f1 fz24 c-504d3e">
+                            <a href="{% url 'doctor_list' section.id %}">{{ section.name }}</a>
+                        </p>
                         <i class="iconfont icon-next fz24 c-504d3e"></i>
-                    </a>
+
 
 
 				</li>
