@@ -19,10 +19,11 @@ Including another URLconf
 """
 from olreg import views
 from django.conf.urls import include, url
+from django.views.decorators.csrf import  csrf_exempt
 # from .views import AuthView, GetUserInfoView, TestView,  WxSignature
 
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='wechat_index'),
+    url(r'^$', csrf_exempt(views.IndexView.as_view()), name='wechat_index'),
     #url(r'^MP_verify_ffcYyAuLnwzBnn58.txt$', views.MP_verify_ffcYyAuLnwzBnn58, name='MP_verify_ffcYyAuLnwzBnn58'),
     url(r'^create_menu/$', views.CreateMenuView.as_view(), name='wechat_create_menu'),
     url(r'^MP_verify_aUoP8juHMf0Ow1it.txt$', views.MP_verify_aUoP8juHMf0Ow1it.as_view(), name='MP_verify_aUoP8juHMf0Ow1it'),

@@ -36,7 +36,6 @@ class IndexView(View):
     服务器确认及消息处理
     """
 
-    @csrf_exempt
     def get(self, request):
         print("wx get request")
         wechat = MyWechat.get_basic_obj(self.request)
@@ -50,7 +49,6 @@ class IndexView(View):
 
         return HttpResponse(request.GET.get('echostr', ''), content_type="text/plain")
 
-    @csrf_exempt
     def post(self, request):
         # POST 解析本次请求的 XML 数据
         print("wx post request")
