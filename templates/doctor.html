@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 
@@ -8,8 +10,8 @@
 		<meta http-equiv="x-rim-auto-match" content="none">
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
 		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
-		<link rel="stylesheet" type="text/css" href="css/main.css"/>
-		<script src="js/jquery-3.3.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 		<title></title>
 	</head>
 	<body>
@@ -18,10 +20,10 @@
 				<ul>
 					<li class="mzub mzub-ac ptb10 bb plr30">
 						<div class="doc-img mr20">
-							<img src="" alt="" />
+							<img src="/media/{{ schedule.doctor.image }}" alt=""/>
 						</div>
 						<div class="mzub-f1 fz22">
-							<p class="mb10">张玉</p>
+							<p class="mb10">{{ schedule.doctor.name }}</p>
 							<p class="">医生</p>
 						</div>
 					</li>

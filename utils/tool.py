@@ -16,7 +16,7 @@ from utils.wechat_api import MyWechat
 
 def auth_openid(func):
     def __deco(*args, **kwargs):
-        request = args[0]
+        request = args[1]
         openid = request.session.get("openid", None)
         print ("当前session中的openid：", openid)
         if request.method == "GET" and not openid:

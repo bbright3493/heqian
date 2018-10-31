@@ -41,39 +41,40 @@
         <div class="doc-list">
             <ul>
                 {% for sch in schedules %}
-                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30">
-                    <div class="doc-img mr20">
-                        <img src="/media/{{ sch.doctor.image }}"  alt=""/>
-                    </div>
-                    <div class="mzub-f1 fz22">
-                        <p class="mb10 c66">{{ sch.doctor.name }}</p>
-                        <p class="c-999893">医生</p>
-                    </div>
-                    <div class="residue-num mzub mzub-pac cff fz18 mr10">剩{{ sch.leave_num }}</div>
-                    <i class="iconfont icon-next fz24 c33"></i>
-                </li>
+                    <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30">
+                        <div class="doc-img mr20">
+                            <img src="/media/{{ sch.doctor.image }}" alt=""/>
+                        </div>
+                        <div class="mzub-f1 fz22">
+                            <p class="mb10 c66">{{ sch.doctor.name }}</p>
+                            <p class="c-999893">医生</p>
+                        </div>
+                        <div class="residue-num mzub mzub-pac cff fz18 mr10">剩{{ sch.leave_num }}</div>
+                        <i class="iconfont icon-next fz24 c33"></i>
+                    </li>
+                    <script type="text/javascript">
+                        $('.scheduling-tab').click(function () {
+                            var index = $(this).index();
+                            if (index == 0) {
+                                $('.week-day-box').addClass('active')
+                            } else {
+                                $('.week-day-box').removeClass('active')
+                            }
+                            $(this).addClass('active').siblings().removeClass('active')
+                        })
+                        function goDoc() {
+                            console.log(123)
+                            window.location.href = '{% url 'register_detail' sch.id %}'
+                        }
+                        ;
+                    </script>
                 {% endfor %}
             </ul>
         </div>
     </div>
-{#    <p class="tx-c c-504d3e fz24">暂无数据~~~</p>#}
+    {#    <p class="tx-c c-504d3e fz24">暂无数据~~~</p>#}
 </div>
 </body>
-<script type="text/javascript">
-    $('.scheduling-tab').click(function () {
-        var index = $(this).index();
-        if (index == 0) {
-            $('.week-day-box').addClass('active')
-        } else {
-            $('.week-day-box').removeClass('active')
-        }
-        $(this).addClass('active').siblings().removeClass('active')
-    })
-    function goDoc() {
-        console.log(123)
-        window.location.href = '医生排班.html'
-    }
-    ;
-</script>
+
 
 </html>

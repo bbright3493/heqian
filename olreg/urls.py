@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^recharge/payback/$', views.RechargePayback.as_view(), name='recharge_payback'),
     url(r'^section_list/$', views.SectionListView.as_view(), name='section_list'),
     url(r'^doctor_list/(?P<section>\d+)/$', views.DoctorListView.as_view(), name='doctor_list'),
+    url(r'^register_detail/(?P<schedule_id>\d+)/$', views.RegisterDetailView.as_view(), name='register_detail'),
 ]

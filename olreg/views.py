@@ -274,6 +274,7 @@ class DoctorListView(View):
     """
     医生列表
     """
+    @auth_openid
     def get(self, request, section):
         """
         查询科室下的医生
@@ -287,6 +288,10 @@ class DoctorListView(View):
 
         schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year, section=section)
 
+
+        openid = request.session.get("openid", None)
+
+
         dates = []
         #生成 周和日期列表
         for i in range(7):
@@ -297,16 +302,19 @@ class DoctorListView(View):
 
             dates.append(my_date)
 
-
-
             date = date + datetime.timedelta(days=1)
 
         #doctors = DoctorInfo.objects.filter(doctorsection__section=section)
-
-
-
         return render(request, "section_detail.html", locals())
 
+
+class RegisterDetailView(View):
+    """
+    挂号详情页
+    """
+    def get(self, request, schedule_id):
+        schedule = Schedule.objects.get(id=schedule_id)
+        return render(request, "doctor.html", locals())
 
 
 
