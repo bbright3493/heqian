@@ -2,10 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
-
-
-
 import time
+import datetime
 import hashlib
 
 from django.views.generic.base import View
@@ -262,6 +260,7 @@ class SectionListView(View):
         return render(request, "section_list.html", locals())
 
 
+dict_week = {0: '一', 1: '二', 2: '三', 3: '四', 4: '五', 5: '六', 6: '天'}
 class DoctorListView(View):
     """
     医生列表
@@ -272,6 +271,22 @@ class DoctorListView(View):
         :param request:
         :return:
         """
+        #获取当前日期
+        date = datetime.datetime.now()
+
+        weeks = []
+        days = []
+        #生成 周和日期列表
+        for i in range(7):
+            week = date.weekday()
+            day = date.day
+
+            weeks.append(dict_week[week])
+            days.append(day)
+
+            date = date + datetime.timedelta(days=1)
+
+
 
         doctors = DoctorInfo.objects.filter(doctorsection__section=section)
 
