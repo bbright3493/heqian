@@ -266,14 +266,13 @@ class DoctorListView(View):
     """
     医生列表
     """
-    def get(self, request):
+    def get(self, request, section):
         """
         查询科室下的医生
         :param request:
         :return:
         """
-        doctors = []
-        section = request.GET.get('section', 0)
+
         doctors = DoctorInfo.objects.filter(doctorsection__section=section)
 
         return render(request, "section_detail.html", locals())
