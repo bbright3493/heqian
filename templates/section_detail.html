@@ -29,10 +29,10 @@
     <div class="scheduling-container">
         <div class="week-day-box active bb ptb10">
             <ul class="mzub mzub-pac">
-                {% for week in weeks %}
+                {% for date_i in dates %}
                     <li class="mzub-f1 tx-c fz22 c-999893">
-                        <p class="week-day mb10">{{ week }}</p>
-                        <p class="week-data mzub mzub-pac active">{{ day }}</p>
+                        <p class="week-day mb10">{{ date_i.week }}</p>
+                        <p class="week-data mzub mzub-pac active">{{ date_i.day }}</p>
                     </li>
                 {% endfor %}
 

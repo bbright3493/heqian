@@ -261,6 +261,15 @@ class SectionListView(View):
 
 
 dict_week = {0: '一', 1: '二', 2: '三', 3: '四', 4: '五', 5: '六', 6: '天'}
+
+
+class MyDate:
+    def __init__(self, week, day):
+        self.week = dict_week[week]
+        self.day = day
+
+
+
 class DoctorListView(View):
     """
     医生列表
@@ -274,19 +283,19 @@ class DoctorListView(View):
         #获取当前日期
         date = datetime.datetime.now()
 
-        weeks = []
-        days = []
+        dates = []
         #生成 周和日期列表
         for i in range(7):
             week = date.weekday()
             day = date.day
 
-            weeks.append(dict_week[week])
-            days.append(day)
+            my_date = MyDate(week, day)
+
+            dates.append(my_date)
+
+
 
             date = date + datetime.timedelta(days=1)
-
-
 
         doctors = DoctorInfo.objects.filter(doctorsection__section=section)
 
