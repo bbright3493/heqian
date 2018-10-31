@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <title></title>
 </head>
 
@@ -43,7 +43,7 @@
                 {% for sch in schedules %}
                 <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30">
                     <div class="doc-img mr20">
-                        <img src="{{ MEDIA_URL }}{{ sch.doctor.image }}"  alt=""/>
+                        <img src="/media/{{ sch.doctor.image }}"  alt=""/>
                     </div>
                     <div class="mzub-f1 fz22">
                         <p class="mb10 c66">{{ sch.doctor.name }}</p>
