@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^recharge/unifiedorder/$', views.Recharge_unifiedorder.as_view(), name='recharge_unifiedorder'),
     url(r'^recharge/payback/$', views.RechargePayback.as_view(), name='recharge_payback'),
     url(r'^section_list/$', views.SectionListView.as_view(), name='section_list'),
+    url(r'^doctor_list/(?P<section>\d+)/$', views.DoctorListView.as_view(), name='doctor_list'),
 ]
