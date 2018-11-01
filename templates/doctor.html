@@ -77,7 +77,7 @@
                         <div class="mzub-f1">
                             <p class="fz22 c-606266">上午</p>
                         </div>
-                        <div class="residue-num mzub mzub-pac cff fz18 mr10">13.00元</div>
+                        <div class="residue-num mzub mzub-pac cff fz18 mr10">{{ schedule.doctor.price }}元</div>
                         <i class="iconfont icon-next fz24 c33"></i>
                     </li>
                 </a>
@@ -90,17 +90,17 @@
     <p class="tx-c c66 fz24">暂无数据~~~</p>
 </div>
 </body>
-<script type="text/javascript">
-    $('.doc-scheduling-tab').click(function () {
-        var index = $(this).index();
-        console.log($(this))
-        $('.doc-scheduling-container').eq(index).addClass('active').siblings().removeClass('active');
-        $(this).addClass('active').siblings().removeClass('active');
-    })
-    function goInfo() {
-
-        window.location.href = "{{ auth_url(reverse('register_identify')) }}"
-    }
-    ;
-</script>
+{#<script type="text/javascript">#}
+{#    $('.doc-scheduling-tab').click(function () {#}
+{#        var index = $(this).index();#}
+{#        console.log($(this))#}
+{#        $('.doc-scheduling-container').eq(index).addClass('active').siblings().removeClass('active');#}
+{#        $(this).addClass('active').siblings().removeClass('active');#}
+{#    })#}
+{#    function goInfo() {#}
+{##}
+{#        window.location.href = "{{ auth_url(reverse('register_identify')) }}"#}
+{#    }#}
+{#    ;#}
+{#</script>#}
 </html>
