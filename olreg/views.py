@@ -320,12 +320,12 @@ class RegisterIdentifyView(View):
     挂号确认页
     """
     @auth_openid
-    def get(self, request):
+    def get(self, request, schedule_id):
+        schedule = Schedule.objects.get(id=schedule_id)
         openid = request.session.get("openid", None)
         try:
             # 通过openid查询用户
             user = User.objects.get(openid=openid)
-
         except:
             print("该openid无注册")
 

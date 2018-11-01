@@ -124,3 +124,26 @@ class Schedule(models.Model):
         verbose_name = '排班信息'
         verbose_name_plural = verbose_name
 
+
+class RegisterInfo(models.Model):
+    """
+    挂号信息
+    """
+    user = models.ForeignKey(User, verbose_name='挂号用户')
+    schedule = models.ForeignKey(Schedule, verbose_name='挂号班次')
+    num = models.IntegerField(default=1, verbose_name='挂号序号')
+    status_choices = (
+        (1, "未支付"),
+        (2, "已支付"),
+    )
+    status = models.SmallIntegerField(choices=status_choices, default=1, verbose_name='挂号状态')
+
+    def __str__(self):
+        return '%s-挂号信息' % (self.user.name)
+
+    class Meta:
+        verbose_name = '挂号信息'
+        verbose_name_plural = verbose_name
+
+
+

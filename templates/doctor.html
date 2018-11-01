@@ -70,7 +70,7 @@
         </div>
         <div class="doc-list">
             <ul>
-                <a href="{{ auth_url(reverse('register_identify')) }}">
+                <a href="{{ auth_url(reverse('register_identify', , kwargs={'schedule_id': schedule.id})) }}">
                     {#                <li onclick="goInfo()" class="mzub mzub-ac ptb10 bb plr30">#}
                     <li  class="mzub mzub-ac ptb10 bb plr30">
                         <div class="appointment mzub mzub-pac fz12 c-606266 mr20">可预约</div>
