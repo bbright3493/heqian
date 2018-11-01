@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -71,14 +70,17 @@
         </div>
         <div class="doc-list">
             <ul>
-                <li onclick="goInfo()" class="mzub mzub-ac ptb10 bb plr30">
-                    <div class="appointment mzub mzub-pac fz12 c-606266 mr20">可预约</div>
-                    <div class="mzub-f1">
-                        <p class="fz22 c-606266">上午</p>
-                    </div>
-                    <div class="residue-num mzub mzub-pac cff fz18 mr10">13.00元</div>
-                    <i class="iconfont icon-next fz24 c33"></i>
-                </li>
+                <a href="{{ auth_url(reverse('register_identify')) }}">
+                    {#                <li onclick="goInfo()" class="mzub mzub-ac ptb10 bb plr30">#}
+                    <li  class="mzub mzub-ac ptb10 bb plr30">
+                        <div class="appointment mzub mzub-pac fz12 c-606266 mr20">可预约</div>
+                        <div class="mzub-f1">
+                            <p class="fz22 c-606266">上午</p>
+                        </div>
+                        <div class="residue-num mzub mzub-pac cff fz18 mr10">13.00元</div>
+                        <i class="iconfont icon-next fz24 c33"></i>
+                    </li>
+                </a>
             </ul>
         </div>
     </div>
