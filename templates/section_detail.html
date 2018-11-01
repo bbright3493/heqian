@@ -63,7 +63,6 @@
                             $(this).addClass('active').siblings().removeClass('active')
                         })
                         function goDoc() {
-                            console.log(123)
                             window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch.id}) }}"
                         }
                         ;
