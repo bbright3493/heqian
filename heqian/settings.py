@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja',
     'olreg',
     'user',
 ]
@@ -53,11 +54,61 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'heqian.urls'
 
+
 TEMPLATES = [
     {
+        'BACKEND': 'django_jinja.backend.Jinja2',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            # Match the template names ending in .html but not the ones in the admin folder.
+            'match_extension': '.html',
+            'match_regex': r'^(?!admin/).*',
+            'app_dirname': 'templates',
+
+            # Can be set to 'jinja2.Undefined' or any other subclass.
+            'undefined': None,
+
+            'newstyle_gettext': True,
+            # 'tests': {
+            #     'mytest': 'path.to.my.test',
+            # },
+            # 'filters': {
+            #     'myfilter': 'path.to.my.filter',
+            # },
+            'globals': {
+                'reverse': 'django.core.urlresolvers.reverse',
+                'auth_url': 'utils.tool.auth_url',
+            },
+            # 'constants': {
+            #     'foo': 'bar',
+            # },
+            'extensions': [
+                'jinja2.ext.do',
+                'jinja2.ext.loopcontrols',
+                'jinja2.ext.with_',
+                'jinja2.ext.i18n',
+                'jinja2.ext.autoescape',
+                'django_jinja.builtins.extensions.CsrfExtension',
+                'django_jinja.builtins.extensions.CacheExtension',
+                'django_jinja.builtins.extensions.TimezoneExtension',
+                'django_jinja.builtins.extensions.UrlsExtension',
+                'django_jinja.builtins.extensions.StaticFilesExtension',
+                'django_jinja.builtins.extensions.DjangoFiltersExtension',
+            ],
+            'bytecode_cache': {
+                'name': 'default',
+                'backend': 'django_jinja.cache.BytecodeCache',
+                'enabled': False,
+            },
+            'autoescape': True,
+            'auto_reload': DEBUG,
+            'translation_engine': 'django.utils.translation',
+        }
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,10 +116,41 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wechat.views_hmx.global_setting',
             ],
         },
     },
+    # {
+    #     'BACKEND': 'django.template.backends.jinja2.Jinja2',
+    #     'DIRS': [os.path.join(BASE_DIR, 'templates')],
+    #     'APP_DIRS': True,
+    #     'OPTIONS': {
+    #         'context_processors': [
+    #             'django.template.context_processors.debug',
+    #             'django.template.context_processors.request',
+    #             'django.contrib.auth.context_processors.auth',
+    #             'django.contrib.messages.context_processors.messages',
+    #         ],
+    #     },
+    # },
 ]
+
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [os.path.join(BASE_DIR, 'templates')]
+#         ,
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
 
 WSGI_APPLICATION = 'heqian.wsgi.application'
 

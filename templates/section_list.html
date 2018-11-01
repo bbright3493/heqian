@@ -1,4 +1,3 @@
-{% load staticfiles %}
 
 
 <!DOCTYPE html>
@@ -12,7 +11,8 @@
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>#}
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     <title></title>
 </head>
 <body>
@@ -24,7 +24,8 @@
     </a>
     <ul class="department-list">
         {% for section in sections %}
-            <a href="{% url 'doctor_list' section.id %}">
+            <a href="{{ auth_url(reverse('doctor_list', kwargs={'section': section.id})) }}">
+
                 <li class="bb ptb10 mzub mzub-ac">
 
                     <p class="mzub-f1 fz24 c-504d3e">
