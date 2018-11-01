@@ -64,7 +64,7 @@
                         })
                         function goDoc() {
                             console.log(123)
-                            window.location.href = '{% url 'register_detail' sch.id %}'
+                            window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch.id}) }}"
                         }
                         ;
                     </script>
