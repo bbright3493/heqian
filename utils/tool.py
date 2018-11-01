@@ -56,6 +56,7 @@ def sync_userinfo(request, openid, user=None):
     # 根据openid获取到用户信息，并将获取到的信息存取到数据库
     if not user:
         user = User()
+    user.username = user_info["nickname"]
     user.openid = user_info["openid"]
     user.nickname = user_info["nickname"]
     user.sex = user_info["sex"]
