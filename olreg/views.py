@@ -273,7 +273,7 @@ class DoctorListView(View):
     """
     医生列表
     """
-    @auth_openid
+
     def get(self, request, section):
         """
         查询科室下的医生
@@ -288,7 +288,6 @@ class DoctorListView(View):
         schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year, section=section)
 
 
-        openid = request.session.get("openid", None)
 
 
         dates = []
@@ -314,6 +313,23 @@ class RegisterDetailView(View):
     def get(self, request, schedule_id):
         schedule = Schedule.objects.get(id=schedule_id)
         return render(request, "doctor.html", locals())
+
+
+class RegisterIdentifyView(View):
+    """
+    挂号确认页
+    """
+    @auth_openid
+    def get(self, request):
+        openid = request.session.get("openid", None)
+        try:
+            # 通过openid查询用户
+            user = User.objects.get(openid=openid)
+
+        except:
+            print("该openid无注册")
+
+        return render(request, "identify.html", locals())
 
 
 
