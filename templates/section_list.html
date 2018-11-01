@@ -24,8 +24,8 @@
     </a>
     <ul class="department-list">
         {% for section in sections %}
-            <a href="{{ auth_url(reverse('doctor_list', kwargs={'section': section.id})) }}">
-
+{#            <a href="{{ auth_url(reverse('doctor_list', kwargs={'section': section.id})) }}">#}
+            <a href="{{ reverse('doctor_list', kwargs={'section': section.id}) }}">
                 <li class="bb ptb10 mzub mzub-ac">
 
                     <p class="mzub-f1 fz24 c-504d3e">

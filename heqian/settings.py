@@ -116,7 +116,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'wechat.views_hmx.global_setting',
+                #'olreg.views.global_setting',
             ],
         },
     },
