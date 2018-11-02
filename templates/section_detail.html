@@ -39,7 +39,20 @@
         </div>
         <div class="doc-list">
             <ul>
-                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor0">
+                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor0">
+                    <div class="doc-img mr20">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="mzub-f1 fz22">
+                        <p class="mb10 c66"></p>
+                        <p class="c-999893">医生</p>
+
+                    </div>
+                    <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
+                    <i class="iconfont icon-next fz24 c33"></i>
+                    <p class="sch_id" hidden="hidden"></p>
+                </li>
+                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor1">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -49,8 +62,9 @@
                     </div>
                     <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
                     <i class="iconfont icon-next fz24 c33"></i>
+                    <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor1">
+                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor2">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -60,8 +74,9 @@
                     </div>
                     <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
                     <i class="iconfont icon-next fz24 c33"></i>
+                    <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor2">
+                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor3">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -71,19 +86,9 @@
                     </div>
                     <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
                     <i class="iconfont icon-next fz24 c33"></i>
+                    <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor3">
-                    <div class="doc-img mr20">
-                        <img src="" alt=""/>
-                    </div>
-                    <div class="mzub-f1 fz22">
-                        <p class="mb10 c66"></p>
-                        <p class="c-999893">医生</p>
-                    </div>
-                    <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
-                    <i class="iconfont icon-next fz24 c33"></i>
-                </li>
-                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor4">
+                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor4">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -93,6 +98,7 @@
                     </div>
                     <div class="residue-num mzub mzub-pac cff fz18 mr10">剩</div>
                     <i class="iconfont icon-next fz24 c33"></i>
+                    <p class="sch_id" hidden="hidden"></p>
                 </li>
 
             </ul>
@@ -117,6 +123,7 @@
         $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}");
         $("#doctor" + String({{ loop.index }})).children(".residue-num").text("剩" + String({{ sch.leave_num }}) + "号");
         $("#doctor" + String({{ loop.index }})).children(".doc-img").children("img").attr("src", "/media/" + "{{ sch.doctor.image }}");
+        $("#doctor" + String({{ loop.index }})).children(".sch_id").text({{ sch.id }})
     {% endfor %}
 
 
@@ -131,10 +138,17 @@
         }
         $(this).addClass('active').siblings().removeClass('active')
     })
-    function goDoc() {
-        alert('ttt')
-    }
-    ;
+
+
+    $('.doctor-list').click(function (){
+
+        var sch_id = $(this).children(".sch_id").text()
+{#        window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch_id}) }}"#}
+        window.location.href = "/wx/register_detail/" + String(sch_id)
+
+    })
+
+
 
     $('.sch_date').click(function () {
 
@@ -168,6 +182,7 @@
                 $("#doctor0").show()
                 for (var i = 0; i < ret.length; i++) {
                     $("#doctor" + String(i)).show();
+                    $("#doctor" + String(i)).children(".sch_id").text(ret[i].sch_id)
                     $("#doctor" + String(i)).children(".mzub-f1").children(".mb10").text(ret[i].name);
                     $("#doctor" + String(i)).children(".residue-num").text("剩" + String(ret[i].leave_num) + "号");
                     $("#doctor" + String(i)).children(".doc-img").children("img").attr("src", "/media/" + ret[i].img_url);
