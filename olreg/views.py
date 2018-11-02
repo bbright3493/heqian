@@ -329,6 +329,7 @@ class AjaxDoctorList(View):
                 dict_data['name'] = sch.doctor.name
                 dict_data['price'] = sch.doctor.price
                 dict_data['leave_num'] = sch.leave_num
+                dict_data['img_url'] = str(sch.doctor.image)
                 data_list.append(dict_data)
 
 

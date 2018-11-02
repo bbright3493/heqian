@@ -27,7 +27,7 @@
     </div>
     <div class="scheduling-container">
         <div class="week-day-box active bb ptb10">
-            <ul class="mzub mzub-pac">
+            <ul class="mzub mzub-pac" id="ul_doc">
                 {% for date_i in dates %}
                     <li class="sch_date mzub-f1 tx-c fz22 c-999893">
                         <p class="week-day mb10">{{ date_i.week }}</p>
@@ -50,49 +50,51 @@
                     <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
                     <i class="iconfont icon-next fz24 c33"></i>
                 </li>
-                {#                <script type="text/javascript">#}
-                {#                    $('.scheduling-tab').click(function () {#}
-                {#                        var index = $(this).index();#}
-                {#                        if (index == 0) {#}
-                {#                            $('.week-day-box').addClass('active')#}
-                {#                        } else {#}
-                {#                            $('.week-day-box').removeClass('active')#}
-                {#                        }#}
-                {#                        $(this).addClass('active').siblings().removeClass('active')#}
-                {#                    })#}
-                {#                    function goDoc() {#}
-                {##}
-                {#                    }#}
-                {#                    ;#}
-                {#                </script>#}
-                {#                {% for sch in schedules %}#}
-                {#                    <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30"  id="doctor">#}
-                {#                        <div class="doc-img mr20">#}
-                {#                            <img src="/media/{{ sch.doctor.image }}" alt=""/>#}
-                {#                        </div>#}
-                {#                        <div class="mzub-f1 fz22">#}
-                {#                            <p class="mb10 c66">{{ sch.doctor.name }}</p>#}
-                {#                            <p class="c-999893">医生</p>#}
-                {#                        </div>#}
-                {#                        <div class="residue-num mzub mzub-pac cff fz18 mr10">剩{{ sch.leave_num }}</div>#}
-                {#                        <i class="iconfont icon-next fz24 c33"></i>#}
-                {#                    </li>#}
-                {#                    <script type="text/javascript">#}
-                {#                        $('.scheduling-tab').click(function () {#}
-                {#                            var index = $(this).index();#}
-                {#                            if (index == 0) {#}
-                {#                                $('.week-day-box').addClass('active')#}
-                {#                            } else {#}
-                {#                                $('.week-day-box').removeClass('active')#}
-                {#                            }#}
-                {#                            $(this).addClass('active').siblings().removeClass('active')#}
-                {#                        })#}
-                {#                        function goDoc() {#}
-                {#                            window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch.id}) }}"#}
-                {#                        }#}
-                {#                        ;#}
-                {#                    </script>#}
-                {#                {% endfor %}#}
+                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor1">
+                    <div class="doc-img mr20">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="mzub-f1 fz22">
+                        <p class="mb10 c66"></p>
+                        <p class="c-999893">医生</p>
+                    </div>
+                    <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
+                    <i class="iconfont icon-next fz24 c33"></i>
+                </li>
+                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor2">
+                    <div class="doc-img mr20">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="mzub-f1 fz22">
+                        <p class="mb10 c66"></p>
+                        <p class="c-999893">医生</p>
+                    </div>
+                    <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
+                    <i class="iconfont icon-next fz24 c33"></i>
+                </li>
+                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor3">
+                    <div class="doc-img mr20">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="mzub-f1 fz22">
+                        <p class="mb10 c66"></p>
+                        <p class="c-999893">医生</p>
+                    </div>
+                    <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
+                    <i class="iconfont icon-next fz24 c33"></i>
+                </li>
+                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor4">
+                    <div class="doc-img mr20">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="mzub-f1 fz22">
+                        <p class="mb10 c66"></p>
+                        <p class="c-999893">医生</p>
+                    </div>
+                    <div class="residue-num mzub mzub-pac cff fz18 mr10">剩</div>
+                    <i class="iconfont icon-next fz24 c33"></i>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -102,6 +104,24 @@
 
 
 <script type="text/javascript">
+
+    $("#ul_doc").children("li:first").children(".week-data").addClass('active')
+    $("#doctor0").hide()
+    $("#doctor1").hide()
+    $("#doctor2").hide()
+    $("#doctor3").hide()
+    $("#doctor4").hide()
+
+    {% for sch in schedules %}
+        $("#doctor" + String({{ loop.index }})).show();
+        $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}");
+        $("#doctor" + String({{ loop.index }})).children(".residue-num").text("剩" + String({{ sch.leave_num }}) + "号");
+        $("#doctor" + String({{ loop.index }})).children(".doc-img").children("img").attr("src", "/media/" + "{{ sch.doctor.image }}");
+    {% endfor %}
+
+
+
+
     $('.scheduling-tab').click(function () {
         var index = $(this).index();
         if (index == 0) {
@@ -115,15 +135,15 @@
         alert('ttt')
     }
     ;
-    var doctor_num = 0;
 
     $('.sch_date').click(function () {
 
         //隐藏元素
         $("#doctor0").hide()
-        //删除元素
-        for (var j = 1; j < doctor_num; j++)
-            $("#" + "doctor" + String(j)).remove();
+        $("#doctor1").hide()
+        $("#doctor2").hide()
+        $("#doctor3").hide()
+        $("#doctor4").hide()
 
         $(".week-data").removeClass('active')
 
@@ -146,12 +166,13 @@
                 var name = ret[0].name
 
                 $("#doctor0").show()
-                for (var i = 1; i < ret.length; i++) {
-                    var addItem = $('#doctor0').clone(true).attr('id', 'doctor' + String(i));
-                    $('#doctor' + String(i - 1)).after(addItem);
-
+                for (var i = 0; i < ret.length; i++) {
+                    $("#doctor" + String(i)).show();
+                    $("#doctor" + String(i)).children(".mzub-f1").children(".mb10").text(ret[i].name);
+                    $("#doctor" + String(i)).children(".residue-num").text("剩" + String(ret[i].leave_num) + "号");
+                    $("#doctor" + String(i)).children(".doc-img").children("img").attr("src", "/media/" + ret[i].img_url);
                 }
-                doctor_num = i;
+
             },
             error: function () {
                 alert("false");
