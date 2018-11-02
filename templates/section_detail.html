@@ -19,7 +19,7 @@
 <body>
 <div class="warp bg-fff6cf">
     <div class="data-title mzub mzub-ac ptb10 bb plr30">
-        <p class="fz24 c33 mzub-f1">{{ str_date }}</p>
+        <p class="data-set fz24 c33 mzub-f1">{{ str_date }}</p>
         <div class="mzub mzub-pac fz20 scheduling-box">
             <p class="scheduling-tab active mzub-f1 plr10 tx-c plr10 ptb10">日期排班</p>
             <p class="scheduling-tab mzub-f1 all-doc plr10 tx-c plr10 ptb10">全部医生</p>
@@ -32,6 +32,7 @@
                     <li class="sch_date mzub-f1 tx-c fz22 c-999893">
                         <p class="week-day mb10">{{ date_i.week }}</p>
                         <p class="week-data mzub mzub-pac ">{{ date_i.day }}</p>
+                        <p class="all-data" hidden="hidden">{{ date_i.date_str }}</p>
                     </li>
                 {% endfor %}
 
@@ -39,7 +40,7 @@
         </div>
         <div class="doc-list">
             <ul>
-                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor0">
+                <li class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor0">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -52,7 +53,7 @@
                     <i class="iconfont icon-next fz24 c33"></i>
                     <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor1">
+                <li class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor1">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -64,7 +65,7 @@
                     <i class="iconfont icon-next fz24 c33"></i>
                     <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor2">
+                <li class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor2">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -76,7 +77,7 @@
                     <i class="iconfont icon-next fz24 c33"></i>
                     <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor3">
+                <li class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor3">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -88,7 +89,7 @@
                     <i class="iconfont icon-next fz24 c33"></i>
                     <p class="sch_id" hidden="hidden"></p>
                 </li>
-                <li  class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor4">
+                <li class="doctor-list mzub mzub-ac ptb10 bb plr30" id="doctor4">
                     <div class="doc-img mr20">
                         <img src="" alt=""/>
                     </div>
@@ -140,14 +141,13 @@
     })
 
 
-    $('.doctor-list').click(function (){
+    $('.doctor-list').click(function () {
 
         var sch_id = $(this).children(".sch_id").text()
-{#        window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch_id}) }}"#}
+        {#        window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch_id}) }}"#}
         window.location.href = "/wx/register_detail/" + String(sch_id)
 
     })
-
 
 
     $('.sch_date').click(function () {
@@ -164,6 +164,10 @@
         week_day = $(this).children('.week-data')
         week_day.addClass('active')
 
+        data_str = $(this).children('.all-data').text()
+
+
+        $(".data-set").text(data_str)
         var day = week_day.text();
 
 
@@ -177,15 +181,14 @@
             },
             success: function (ret) {
 
-                var name = ret[0].name
-
-                $("#doctor0").show()
-                for (var i = 0; i < ret.length; i++) {
-                    $("#doctor" + String(i)).show();
-                    $("#doctor" + String(i)).children(".sch_id").text(ret[i].sch_id)
-                    $("#doctor" + String(i)).children(".mzub-f1").children(".mb10").text(ret[i].name);
-                    $("#doctor" + String(i)).children(".residue-num").text("剩" + String(ret[i].leave_num) + "号");
-                    $("#doctor" + String(i)).children(".doc-img").children("img").attr("src", "/media/" + ret[i].img_url);
+                if (ret.length > 0) {
+                    for (var i = 0; i < ret.length; i++) {
+                        $("#doctor" + String(i)).show();
+                        $("#doctor" + String(i)).children(".sch_id").text(ret[i].sch_id)
+                        $("#doctor" + String(i)).children(".mzub-f1").children(".mb10").text(ret[i].name);
+                        $("#doctor" + String(i)).children(".residue-num").text("剩" + String(ret[i].leave_num) + "号");
+                        $("#doctor" + String(i)).children(".doc-img").children("img").attr("src", "/media/" + ret[i].img_url);
+                    }
                 }
 
             },

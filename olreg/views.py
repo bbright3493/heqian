@@ -264,9 +264,10 @@ dict_week = {0: '一', 1: '二', 2: '三', 3: '四', 4: '五', 5: '六', 6: '天
 
 
 class MyDate:
-    def __init__(self, week, day):
+    def __init__(self, week, day, date_str):
         self.week = dict_week[week]
         self.day = day
+        self.date_str = date_str
 
 
 
@@ -296,8 +297,9 @@ class DoctorListView(View):
         for i in range(7):
             week = date.weekday()
             day = date.day
+            date_str = date.strftime('%Y-%m-%d')
 
-            my_date = MyDate(week, day)
+            my_date = MyDate(week, day, date_str)
 
             dates.append(my_date)
 
