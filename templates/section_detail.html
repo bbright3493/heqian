@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
 
-{#    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>#}
+    {#    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>#}
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <title></title>
 </head>
@@ -30,9 +29,9 @@
         <div class="week-day-box active bb ptb10">
             <ul class="mzub mzub-pac">
                 {% for date_i in dates %}
-                    <li class="mzub-f1 tx-c fz22 c-999893">
+                    <li class="sch_date mzub-f1 tx-c fz22 c-999893">
                         <p class="week-day mb10">{{ date_i.week }}</p>
-                        <p class="week-data mzub mzub-pac active">{{ date_i.day }}</p>
+                        <p class="week-data mzub mzub-pac ">{{ date_i.day }}</p>
                     </li>
                 {% endfor %}
 
@@ -40,34 +39,60 @@
         </div>
         <div class="doc-list">
             <ul>
-                {% for sch in schedules %}
-                    <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30">
-                        <div class="doc-img mr20">
-                            <img src="/media/{{ sch.doctor.image }}" alt=""/>
-                        </div>
-                        <div class="mzub-f1 fz22">
-                            <p class="mb10 c66">{{ sch.doctor.name }}</p>
-                            <p class="c-999893">医生</p>
-                        </div>
-                        <div class="residue-num mzub mzub-pac cff fz18 mr10">剩{{ sch.leave_num }}</div>
-                        <i class="iconfont icon-next fz24 c33"></i>
-                    </li>
-                    <script type="text/javascript">
-                        $('.scheduling-tab').click(function () {
-                            var index = $(this).index();
-                            if (index == 0) {
-                                $('.week-day-box').addClass('active')
-                            } else {
-                                $('.week-day-box').removeClass('active')
-                            }
-                            $(this).addClass('active').siblings().removeClass('active')
-                        })
-                        function goDoc() {
-                            window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch.id}) }}"
-                        }
-                        ;
-                    </script>
-                {% endfor %}
+                <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30" id="doctor0">
+                    <div class="doc-img mr20">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="mzub-f1 fz22">
+                        <p class="mb10 c66"></p>
+                        <p class="c-999893">医生</p>
+                    </div>
+                    <div class="residue-num mzub mzub-pac cff fz18 mr10"></div>
+                    <i class="iconfont icon-next fz24 c33"></i>
+                </li>
+                {#                <script type="text/javascript">#}
+                {#                    $('.scheduling-tab').click(function () {#}
+                {#                        var index = $(this).index();#}
+                {#                        if (index == 0) {#}
+                {#                            $('.week-day-box').addClass('active')#}
+                {#                        } else {#}
+                {#                            $('.week-day-box').removeClass('active')#}
+                {#                        }#}
+                {#                        $(this).addClass('active').siblings().removeClass('active')#}
+                {#                    })#}
+                {#                    function goDoc() {#}
+                {##}
+                {#                    }#}
+                {#                    ;#}
+                {#                </script>#}
+                {#                {% for sch in schedules %}#}
+                {#                    <li onclick="goDoc()" class="mzub mzub-ac ptb10 bb plr30"  id="doctor">#}
+                {#                        <div class="doc-img mr20">#}
+                {#                            <img src="/media/{{ sch.doctor.image }}" alt=""/>#}
+                {#                        </div>#}
+                {#                        <div class="mzub-f1 fz22">#}
+                {#                            <p class="mb10 c66">{{ sch.doctor.name }}</p>#}
+                {#                            <p class="c-999893">医生</p>#}
+                {#                        </div>#}
+                {#                        <div class="residue-num mzub mzub-pac cff fz18 mr10">剩{{ sch.leave_num }}</div>#}
+                {#                        <i class="iconfont icon-next fz24 c33"></i>#}
+                {#                    </li>#}
+                {#                    <script type="text/javascript">#}
+                {#                        $('.scheduling-tab').click(function () {#}
+                {#                            var index = $(this).index();#}
+                {#                            if (index == 0) {#}
+                {#                                $('.week-day-box').addClass('active')#}
+                {#                            } else {#}
+                {#                                $('.week-day-box').removeClass('active')#}
+                {#                            }#}
+                {#                            $(this).addClass('active').siblings().removeClass('active')#}
+                {#                        })#}
+                {#                        function goDoc() {#}
+                {#                            window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch.id}) }}"#}
+                {#                        }#}
+                {#                        ;#}
+                {#                    </script>#}
+                {#                {% endfor %}#}
             </ul>
         </div>
     </div>
@@ -75,5 +100,111 @@
 </div>
 </body>
 
+
+<script type="text/javascript">
+    $('.scheduling-tab').click(function () {
+        var index = $(this).index();
+        if (index == 0) {
+            $('.week-day-box').addClass('active')
+        } else {
+            $('.week-day-box').removeClass('active')
+        }
+        $(this).addClass('active').siblings().removeClass('active')
+    })
+    function goDoc() {
+        alert('ttt')
+    }
+    ;
+    var doctor_num = 0;
+
+    $('.sch_date').click(function () {
+
+        //隐藏元素
+        $("#doctor0").hide()
+        //删除元素
+        for (var j = 1; j < doctor_num; j++)
+            $("#" + "doctor" + String(j)).remove();
+
+        $(".week-data").removeClass('active')
+
+        week_day = $(this).children('.week-data')
+        week_day.addClass('active')
+
+        var day = week_day.text();
+
+
+        $.ajax({
+            type: "POST",
+            data: {'day': day, 'section': {{ section }}},
+            url: "{{ reverse('ajax_doctor')}}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致,或者直接写http地址
+            cache: false,
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            },
+            success: function (ret) {
+
+                var name = ret[0].name
+
+                $("#doctor0").show()
+                for (var i = 1; i < ret.length; i++) {
+                    var addItem = $('#doctor0').clone(true).attr('id', 'doctor' + String(i));
+                    $('#doctor' + String(i - 1)).after(addItem);
+
+                }
+                doctor_num = i;
+            },
+            error: function () {
+                alert("false");
+            }
+
+        })
+    })
+
+
+    {#    function getDoctor() {#}
+    {##}
+    {#         var day1 = $(this).children('ul').length;#}
+    {##}
+    {#        //var day = $(this).children(".week-data").html()#}
+    {##}
+    {#        alert(day1)#}
+    {##}
+    {#        //隐藏元素#}
+    {#        $("#doctor0").hide()#}
+    {#        //删除元素#}
+    {#        for (var j = 1; j < doctor_num; j++)#}
+    {#            $("#" + "doctor" + String(j)).remove();#}
+    {##}
+    {##}
+    {##}
+    {#        $.ajax({#}
+    {#            type: "POST",#}
+    {#            data: {'date': day1},#}
+    {#            url: "{{ reverse('ajax_doctor')}}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致,或者直接写http地址#}
+    {#            cache: false,#}
+    {#            beforeSend: function (xhr, settings) {#}
+    {#                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");#}
+    {#            },#}
+    {#            success: function (ret) {#}
+    {##}
+    {#            },#}
+    {#            error: function () {#}
+    {#                alert("false");#}
+    {#            }#}
+    {#        });#}
+    {##}
+    {##}
+    {#        $("#doctor0").show()#}
+    {#        for (var i = 1; i < 3; i++) {#}
+    {#            var addItem = $('#doctor0').clone(true).attr('id', 'doctor' + String(i));#}
+    {#            $('#doctor' + String(i - 1)).after(addItem);#}
+    {#        }#}
+    {#        doctor_num = i;#}
+    {##}
+    {##}
+    {#                            window.location.href = "{{ reverse('register_detail', kwargs={'schedule_id': sch.id}) }}"#}
+    {#    }#}
+    {#    ;#}
+</script>
 
 </html>

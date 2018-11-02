@@ -5,6 +5,7 @@ from django.shortcuts import render
 import time
 import datetime
 import hashlib
+import json
 
 from django.views.generic.base import View
 from django.shortcuts import render, reverse, redirect
@@ -304,6 +305,38 @@ class DoctorListView(View):
 
         #doctors = DoctorInfo.objects.filter(doctorsection__section=section)
         return render(request, "section_detail.html", locals())
+
+
+
+
+class AjaxDoctorList(View):
+    def post(self, request):
+        day = int(request.POST.get('day', 0))
+        section = request.POST.get('section', 0)
+        date = datetime.datetime.now()
+
+        dict_data = {}
+        data_list = []
+        try:
+            schedules = Schedule.objects.filter(date__day=day, date__month=date.month, date__year=date.year,
+                                            section=section)
+        except:
+            dict_data['status'] = "fail"
+            data_list.append(dict_data)
+        else:
+            for sch in schedules:
+                dict_data['status'] = "success"
+                dict_data['name'] = sch.doctor.name
+                dict_data['price'] = sch.doctor.price
+                dict_data['leave_num'] = sch.leave_num
+                data_list.append(dict_data)
+
+
+        json_data = json.dumps(data_list)
+
+        print(json_data)
+
+        return HttpResponse(json_data, content_type='application/json')
 
 
 class RegisterDetailView(View):
