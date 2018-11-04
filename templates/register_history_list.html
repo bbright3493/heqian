@@ -7,7 +7,7 @@
 <body>
 {% for reg_info in reg_infos %}
 
-    <a href="{{ reverse('register_history_info'), kwargs={'register_id': reg_info.id} }}">{{ reg_info.user.nickname }}-{{ reg_info.register_time }}</a>
+    <a href="{{ reverse('register_history_info', kwargs={'register_id': reg_info.id}) }}">{{ reg_info.user.nickname }}-{{ reg_info.register_time }}</a>
 
 {% endfor %}
 

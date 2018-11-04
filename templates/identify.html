@@ -54,7 +54,7 @@
 
 <script type="text/javascript">
     $('.sureBtn').click(function () {
-        window.location.href = "{{ auth_url(reverse('register_success')), kwargs={'user_id': user.id} }}";
+        window.location.href = "{{ auth_url(reverse('register_success', kwargs={'user_id': user.id})) }}";
     })
 
 </script>
