@@ -392,8 +392,8 @@ class RegisterSuccessView(View):
         salt = str(reg_num).join(random_str)
         print(salt)
         #保存记录
-        user_register = RegisterInfo.objects.create()
-        user_register.user = user
+        user_register = RegisterInfo.objects.create(user=user, schedule=schedule)
+        # user_register.user = user
         user_register.schedule = schedule
         user_register.num = reg_num
         user_register.status = 2
