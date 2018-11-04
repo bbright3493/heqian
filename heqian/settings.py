@@ -269,7 +269,7 @@ MENU_DATA = {
                         },{
                             'type': 'view',
                             'name': '挂号记录',
-                            'url': MENU_URL % ('http://%s/wx/history_register/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/register_history_list/' % HOST)
                         }]
                 }
             ]}

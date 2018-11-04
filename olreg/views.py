@@ -389,7 +389,9 @@ class RegisterSuccessView(View):
         #生成挂号确认码
         for i in range(4):
             random_str.append(random.choice(seed))
-        salt = str(reg_num).join(random_str)
+        # salt = str(reg_num) + random_str
+        salt = ''.join(random_str)
+        salt = str(reg_num) + salt
         print(salt)
         #保存记录
         user_register = RegisterInfo.objects.create(user=user, schedule=schedule)
