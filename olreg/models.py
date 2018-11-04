@@ -132,11 +132,14 @@ class RegisterInfo(models.Model):
     user = models.ForeignKey(User, verbose_name='挂号用户')
     schedule = models.ForeignKey(Schedule, verbose_name='挂号班次')
     num = models.IntegerField(default=1, verbose_name='挂号序号')
+
     status_choices = (
         (1, "未支付"),
         (2, "已支付"),
     )
     status = models.SmallIntegerField(choices=status_choices, default=1, verbose_name='挂号状态')
+    register_time = models.DateTimeField(auto_now_add=True, verbose_name='挂号时间', )
+    register_code = models.CharField(max_length=10, verbose_name='挂号确认码')
 
     def __str__(self):
         return '%s-挂号信息' % (self.user.name)

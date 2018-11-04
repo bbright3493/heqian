@@ -369,6 +369,66 @@ class RegisterIdentifyView(View):
         return render(request, "identify.html", locals())
 
 
+import random
+seed = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+class RegisterSuccessView(View):
+    """
+    挂号成功页
+    """
+    def get(self, request, user_id, schedule_id):
+        random_str = []
+        #查询用户信息
+        user = User.objects.get(id=user_id)
+        #查询排班
+        schedule = Schedule.objects.get(id=schedule_id)
+        #查询可用序号
+        reg_num = schedule.register_num - schedule.leave_num + 1
+        #修改排班信息 剩余号码减1
+        schedule.leave_num -= 1
+        schedule.save()
+        #生成挂号确认码
+        for i in range(4):
+            random_str.append(random.choice(seed))
+        salt = str(reg_num).join(random_str)
+        print(salt)
+        #保存记录
+        user_register = RegisterInfo.objects.create()
+        user_register.user = user
+        user_register.schedule = schedule
+        user_register.num = reg_num
+        user_register.status = 2
+        user_register.register_code = salt
+        user_register.save()
+
+        return render(request, "register_success.html", locals())
+
+
+class RegisterHistoryListView(View):
+    """
+    挂号历史记录
+    """
+    @auth_openid
+    def get(self, request):
+        openid = request.session.get("openid", None)
+        try:
+            # 通过openid查询用户
+            user = User.objects.get(openid=openid)
+        except:
+            print("该openid无注册")
+        else:
+            #查询该用户的所有挂号记录
+            reg_infos = RegisterInfo.objects.filter(user=user)
+
+        return render(request, "register_history_list.html", locals())
+
+
+class RegisterHistoryView(View):
+    def get(self, request, register_id):
+        # 查询挂号记录
+        reg_infos = RegisterInfo.objects.filter(id=register_id)
+        return render(request, "register_success.html", locals())
+
+
 
 
 
