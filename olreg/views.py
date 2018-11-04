@@ -427,7 +427,7 @@ class RegisterHistoryListView(View):
 class RegisterHistoryView(View):
     def get(self, request, register_id):
         # 查询挂号记录
-        reg_infos = RegisterInfo.objects.filter(id=register_id)
+        user_register = RegisterInfo.objects.get(id=register_id)
         return render(request, "register_success.html", locals())
 
 
