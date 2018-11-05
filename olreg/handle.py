@@ -130,7 +130,7 @@ class WechatHanle(object):
         response = self.wechat.response_news([
             {
                 'title': '欢迎来到禾乾医疗 点我快速挂号',
-                'picurl': 'http://www.52ky.net/static/img/wechat/headPic.jpg',
+                'picurl': 'http://www.52ky.net/static/img/headPic.jpg',
                 'url': 'http://' + settings.HOST + '/wx/section_list/'
             }
         ])

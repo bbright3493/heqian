@@ -406,7 +406,7 @@ class RegisterSuccessView(View):
 
         response = wechat.send_text_message(user.openid, "恭喜挂号成功")
 
-        return HttpResponse(response, content_type="application/xml")
+        # return HttpResponse(response, content_type="application/xml")
 
         return render(request, "register_success.html", locals())
 
