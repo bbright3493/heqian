@@ -408,7 +408,8 @@ class RegisterSuccessView(View):
             {
                 'title': '恭喜挂号成功 点我查看挂号详情',
                 'picurl': 'http://www.52ky.net/static/img/wechat/headPic.jpg',
-                'url': 'http://' + settings.HOST + '/wx/register_success/'+str(user_id) + '/' +str(schedule_id)
+                # 'url': 'http://' + settings.HOST + '/wx/register_success/'+str(user_id) + '/' +str(schedule_id)
+                'url': 'http://' + settings.HOST + '/wx/section_list/'
             }
         ])
 
