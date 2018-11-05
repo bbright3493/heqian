@@ -404,14 +404,7 @@ class RegisterSuccessView(View):
 
         wechat = MyWechat.get_basic_obj(request)
 
-        response = wechat.response_news([
-            {
-                'title': '恭喜挂号成功 点我查看挂号详情',
-                'picurl': 'http://www.52ky.net/static/img/wechat/headPic.jpg',
-                # 'url': 'http://' + settings.HOST + '/wx/register_success/'+str(user_id) + '/' +str(schedule_id)
-                'url': 'http://' + settings.HOST + '/wx/section_list/'
-            }
-        ])
+        response = wechat.send_text_message(user.openid, "恭喜挂号成功")
 
         return response
 
