@@ -249,14 +249,22 @@ class AddKf(View):
         pass
 
 
+class HospitalListView(View):
+    """
+    病区列表页
+    """
+    def get(self, request):
+        hospitals = HospitalArea.objects.all()
+        return render(request, "hospital_list.html", locals())
+
 class SectionListView(View):
     """
     科室列表
     """
 
-    def get(self, request):
+    def get(self, request, area_id):
         # 查询科室 渲染科室列表页
-        sections = SectionInfo.objects.all()
+        sections = SectionInfo.objects.filter(area=area_id)
         return render(request, "section_list.html", locals())
 
 

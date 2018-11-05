@@ -265,7 +265,7 @@ MENU_DATA = {
                         {
                             'type': 'view',
                             'name': '在线挂号',
-                            'url': MENU_URL % ('http://%s/wx/section_list/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/hospital_list/' % HOST)
                         },{
                             'type': 'view',
                             'name': '我的挂号',

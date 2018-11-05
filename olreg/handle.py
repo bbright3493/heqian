@@ -131,7 +131,7 @@ class WechatHanle(object):
             {
                 'title': '欢迎来到禾乾医疗 点我快速挂号',
                 'picurl': 'http://www.52ky.net/static/img/headPic.jpg',
-                'url': 'http://' + settings.HOST + '/wx/section_list/'
+                'url': 'http://' + settings.HOST + '/wx/hospital_list/'
             }
         ])
         return response
