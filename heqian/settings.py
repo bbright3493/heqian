@@ -268,7 +268,7 @@ MENU_DATA = {
                             'url': MENU_URL % ('http://%s/wx/section_list/' % HOST)
                         },{
                             'type': 'view',
-                            'name': '挂号记录',
+                            'name': '我的挂号',
                             'url': MENU_URL % ('http://%s/wx/register_history_list/' % HOST)
                         }]
                 }

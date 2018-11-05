@@ -404,7 +404,7 @@ class RegisterSuccessView(View):
 
         wechat = MyWechat.get_basic_obj(request)
 
-        response = wechat.send_text_message(user.openid, "恭喜挂号成功")
+        response = wechat.send_text_message(user.openid, "恭喜挂号成功 请至'看病挂号'->'我的挂号'下查看挂号详情")
 
         # return HttpResponse(response, content_type="application/xml")
 
