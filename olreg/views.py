@@ -28,9 +28,8 @@ from utils.tool import sync_userinfo
 from olreg.models import *
 from utils.wzhifuSDK import UnifiedOrder_pub, JsApi_pub, WxPayConf_pub, Common_util_pub
 
-
-
 LOGIN_URL = settings.MENU_URL % ("http://%s/wx/login/" % settings.HOST)
+
 
 class IndexView(View):
     """
@@ -83,8 +82,6 @@ class IndexView(View):
         return HttpResponse(response, content_type="application/xml")
 
 
-
-
 class CreateMenuView(View):
     # @superuser_required(login_url=LOGIN_URL)
     # @login_required(login_url=LOGIN_URL)
@@ -92,6 +89,7 @@ class CreateMenuView(View):
         wechat = MyWechat.get_basic_obj(request)
         wechat.create_menu(settings.MENU_DATA)
         return HttpResponse("创建菜单成功，请取消关注后再重新关注查看效果")
+
 
 # def MP_verify_aUoP8juHMf0Ow1it(request):
 #     return HttpResponse("aUoP8juHMf0Ow1i")
@@ -143,7 +141,6 @@ class Recharge(View):
         except User.DoesNotExist:
             sync_userinfo(request, openid)
         return render(request, "recharge.html", locals())
-
 
 
 class Recharge_unifiedorder(View):
@@ -233,7 +230,7 @@ class RechargePayback(View):
                     rr.status = True
                     rr.save()
                     print(result["out_trade_no"], "充值成功")
-                    #todo 发送客服消息
+                    # todo 发送客服消息
             except RegRecord.DoesNotExist:
                 print("未找到订单号")
             except Exception as e:
@@ -242,10 +239,12 @@ class RechargePayback(View):
         response_str = cb.arrayToXml(response_arr)
         return HttpResponse(response_str, "application/xml")
 
+
 class AddKf(View):
     """
     添加客服
     """
+
     def get(self, request):
         pass
 
@@ -254,8 +253,9 @@ class SectionListView(View):
     """
     科室列表
     """
+
     def get(self, request):
-        #查询科室 渲染科室列表页
+        # 查询科室 渲染科室列表页
         sections = SectionInfo.objects.all()
         return render(request, "section_list.html", locals())
 
@@ -270,7 +270,6 @@ class MyDate:
         self.date_str = date_str
 
 
-
 class DoctorListView(View):
     """
     医生列表
@@ -282,18 +281,16 @@ class DoctorListView(View):
         :param request:
         :return:
         """
-        #获取当前日期
+        # 获取当前日期
         date = datetime.datetime.now()
 
         str_date = date.strftime('%Y-%m-%d')
 
-        schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year, section=section)
-
-
-
+        schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
+                                            section=section)
 
         dates = []
-        #生成 周和日期列表
+        # 生成 周和日期列表
         for i in range(7):
             week = date.weekday()
             day = date.day
@@ -305,10 +302,8 @@ class DoctorListView(View):
 
             date = date + datetime.timedelta(days=1)
 
-        #doctors = DoctorInfo.objects.filter(doctorsection__section=section)
+        # doctors = DoctorInfo.objects.filter(doctorsection__section=section)
         return render(request, "section_detail.html", locals())
-
-
 
 
 class AjaxDoctorList(View):
@@ -321,7 +316,7 @@ class AjaxDoctorList(View):
         data_list = []
         try:
             schedules = Schedule.objects.filter(date__day=day, date__month=date.month, date__year=date.year,
-                                            section=section)
+                                                section=section)
         except:
             dict_data['status'] = "fail"
             data_list.append(dict_data)
@@ -335,7 +330,6 @@ class AjaxDoctorList(View):
                 dict_data['sch_id'] = sch.id
                 data_list.append(dict_data)
 
-
         json_data = json.dumps(data_list)
 
         print(json_data)
@@ -347,6 +341,7 @@ class RegisterDetailView(View):
     """
     挂号详情页
     """
+
     def get(self, request, schedule_id):
         schedule = Schedule.objects.get(id=schedule_id)
         return render(request, "doctor.html", locals())
@@ -356,6 +351,7 @@ class RegisterIdentifyView(View):
     """
     挂号确认页
     """
+
     @auth_openid
     def get(self, request, schedule_id):
         schedule = Schedule.objects.get(id=schedule_id)
@@ -370,30 +366,34 @@ class RegisterIdentifyView(View):
 
 
 import random
+
 seed = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
 class RegisterSuccessView(View):
     """
     挂号成功页
     """
+
     def get(self, request, user_id, schedule_id):
         random_str = []
-        #查询用户信息
+        # 查询用户信息
         user = User.objects.get(id=user_id)
-        #查询排班
+        # 查询排班
         schedule = Schedule.objects.get(id=schedule_id)
-        #查询可用序号
+        # 查询可用序号
         reg_num = schedule.register_num - schedule.leave_num + 1
-        #修改排班信息 剩余号码减1
+        # 修改排班信息 剩余号码减1
         schedule.leave_num -= 1
         schedule.save()
-        #生成挂号确认码
+        # 生成挂号确认码
         for i in range(4):
             random_str.append(random.choice(seed))
         # salt = str(reg_num) + random_str
         salt = ''.join(random_str)
         salt = str(reg_num) + salt
         print(salt)
-        #保存记录
+        # 保存记录
         user_register = RegisterInfo.objects.create(user=user, schedule=schedule)
         # user_register.user = user
         user_register.schedule = schedule
@@ -404,7 +404,7 @@ class RegisterSuccessView(View):
 
         wechat = MyWechat.get_basic_obj(request)
 
-        response = wechat.send_text_message(user.openid, "恭喜挂号成功 请至'看病挂号'->'我的挂号'下查看挂号详情")
+        response = wechat.send_text_message(user.openid, "恭喜挂号成功 请凭挂号码%s到收费处取号 如需查看挂号详情 请至公众号菜单'看病挂号'->'我的挂号'下进行查看" % (salt))
 
         # return HttpResponse(response, content_type="application/xml")
 
@@ -415,6 +415,7 @@ class RegisterHistoryListView(View):
     """
     挂号历史记录
     """
+
     @auth_openid
     def get(self, request):
         openid = request.session.get("openid", None)
@@ -424,7 +425,7 @@ class RegisterHistoryListView(View):
         except:
             print("该openid无注册")
         else:
-            #查询该用户的所有挂号记录
+            # 查询该用户的所有挂号记录
             reg_infos = RegisterInfo.objects.filter(user=user)
 
         return render(request, "register_history_list.html", locals())
@@ -435,11 +436,3 @@ class RegisterHistoryView(View):
         # 查询挂号记录
         user_register = RegisterInfo.objects.get(id=register_id)
         return render(request, "register_success.html", locals())
-
-
-
-
-
-
-
-
