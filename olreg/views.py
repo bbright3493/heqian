@@ -444,7 +444,7 @@ class HosptialIntrView(View):
     医院介绍
     """
     def get(self, request):
-        hosptial_intr = HosptialIntr.object.all()
+        hosptial_intr = HosptialIntr.objects.all()
         return render(request, "hosptial_intr.html", locals())
 
 
