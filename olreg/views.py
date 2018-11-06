@@ -471,7 +471,7 @@ class QueryCodeView(View):
     def get(self, request):
         date = datetime.datetime.now()
         schdules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year).order_by('type')
-        render(request, "query_code.html", locals())
+        return render(request, "query_code.html", locals())
 
     def post(self, request):
         fun_code = request.POST.get('fun_code', 0)
