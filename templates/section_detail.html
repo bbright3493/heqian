@@ -121,7 +121,7 @@
 
     {% for sch in schedules %}
         $("#doctor" + String({{ loop.index }})).show();
-        $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}-{{ sch.get_type_display }}");
+        $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}-{{ sch.get_type_display() }}");
         $("#doctor" + String({{ loop.index }})).children(".residue-num").text("剩" + String({{ sch.leave_num }}) + "号");
         $("#doctor" + String({{ loop.index }})).children(".doc-img").children("img").attr("src", "/media/" + "{{ sch.doctor.image }}");
         $("#doctor" + String({{ loop.index }})).children(".sch_id").text({{ sch.id }})
