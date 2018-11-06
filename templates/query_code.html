@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>禾乾医疗出号系统</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+<p>使用说明</p>
+<br>
+<p>排班信息</p>
+<br>
+{% for sch in schdules %}
+    <p>医生{{ sch.doctor.name }}</p>-<p>班次{{ sch.get_type_display() }}</p>-<p>序号{{ sch.leave_num }}</p>
+    <button>查询序号</button>-
+    <button>确认出号</button>
+{% endfor %}
+
+<div class="list-search plr20 mzub mzub-ac mb30 bg-e4d2ac">
+    <i class="iconfont icon-sousuo fz24 c33 mr10"></i>
+    <input class="c-606266 fz14" type="text" name="" id="" value="" placeholder="输入挂号确认码查询"/>
+    <input type="submit">查询并出号
+</div>
+
+</body>
+</html>

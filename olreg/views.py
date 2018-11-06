@@ -469,7 +469,8 @@ class QueryCodeView(View):
     查询挂号序号和确认码
     """
     def get(self, request):
-        schdules = Schedule.objects.all()
+        date = datetime.datetime.now()
+        schdules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year).order_by('type')
         render(request, "query_code.html", locals())
 
     def post(self, request):

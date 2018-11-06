@@ -19,10 +19,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
+from olreg.views import QueryCodeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^', include('collar.urls')),
     url(r'^wx/', include('olreg.urls')),
+    url(r'^query_code/$', QueryCodeView.as_view(), name='query_code'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]
