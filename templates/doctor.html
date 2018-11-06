@@ -70,7 +70,7 @@
         </div>
         <div class="doc-list">
             <ul>
-                {% for schedule in schedules %}
+
                 <a href="{{ auth_url(reverse('register_identify', kwargs={'schedule_id': schedule.id})) }}">
                     {#                <li onclick="goInfo()" class="mzub mzub-ac ptb10 bb plr30">#}
                     <li  class="mzub mzub-ac ptb10 bb plr30">
@@ -82,7 +82,7 @@
                         <i class="iconfont icon-next fz24 c33"></i>
                     </li>
                 </a>
-                {% endfor %}
+
             </ul>
         </div>
     </div>

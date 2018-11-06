@@ -121,10 +121,10 @@
 
     {% for sch in schedules %}
         $("#doctor" + String({{ loop.index }})).show();
-        $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}");
+        $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}-{{ sch.get_type_display }}");
         $("#doctor" + String({{ loop.index }})).children(".residue-num").text("剩" + String({{ sch.leave_num }}) + "号");
         $("#doctor" + String({{ loop.index }})).children(".doc-img").children("img").attr("src", "/media/" + "{{ sch.doctor.image }}");
-        $("#doctor" + String({{ loop.index }})).children(".sch_id").text({{ sch.doctor.id }})
+        $("#doctor" + String({{ loop.index }})).children(".sch_id").text({{ sch.id }})
     {% endfor %}
 
 
@@ -185,7 +185,7 @@
                     for (var i = 0; i < ret.length; i++) {
                         $("#doctor" + String(i)).show();
                         $("#doctor" + String(i)).children(".sch_id").text(ret[i].sch_id)
-                        $("#doctor" + String(i)).children(".mzub-f1").children(".mb10").text(ret[i].name);
+                        $("#doctor" + String(i)).children(".mzub-f1").children(".mb10").text(ret[i].name+'-'+ret[i].type);
                         $("#doctor" + String(i)).children(".residue-num").text("剩" + String(ret[i].leave_num) + "号");
                         $("#doctor" + String(i)).children(".doc-img").children("img").attr("src", "/media/" + ret[i].img_url);
                     }
