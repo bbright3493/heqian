@@ -294,7 +294,7 @@ class DoctorListView(View):
         str_date = date.strftime('%Y-%m-%d')
 
         schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
-                                            section=section)
+                                            section=section).order_by('type')
 
         dates = []
         # 生成 周和日期列表
@@ -323,7 +323,7 @@ class AjaxDoctorList(View):
         data_list = []
         try:
             schedules = Schedule.objects.filter(date__day=day, date__month=date.month, date__year=date.year,
-                                                section=section)
+                                                section=section).order_by('type')
         except:
             dict_data['status'] = "fail"
             data_list.append(dict_data)
