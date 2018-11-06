@@ -13,7 +13,7 @@
 
     {#    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>#}
     <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <title></title>
+    <title>选择医生</title>
 </head>
 
 <body>
@@ -124,7 +124,7 @@
         $("#doctor" + String({{ loop.index }})).children(".mzub-f1").children(".mb10").text("{{ sch.doctor.name }}");
         $("#doctor" + String({{ loop.index }})).children(".residue-num").text("剩" + String({{ sch.leave_num }}) + "号");
         $("#doctor" + String({{ loop.index }})).children(".doc-img").children("img").attr("src", "/media/" + "{{ sch.doctor.image }}");
-        $("#doctor" + String({{ loop.index }})).children(".sch_id").text({{ sch.id }})
+        $("#doctor" + String({{ loop.index }})).children(".sch_id").text({{ sch.doctor.id }})
     {% endfor %}
 
 

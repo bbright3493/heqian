@@ -282,7 +282,6 @@ class DoctorListView(View):
     """
     医生列表
     """
-
     def get(self, request, section):
         """
         查询科室下的医生
@@ -350,8 +349,8 @@ class RegisterDetailView(View):
     挂号详情页
     """
 
-    def get(self, request, schedule_id):
-        schedule = Schedule.objects.get(id=schedule_id)
+    def get(self, request, doctor_id):
+        schedules = Schedule.objects.filter(doctor=doctor_id)
         return render(request, "doctor.html", locals())
 
 
@@ -439,8 +438,61 @@ class RegisterHistoryListView(View):
         return render(request, "register_history_list.html", locals())
 
 
+class HosptialIntrView(View):
+    """
+    医院介绍
+    """
+    def get(self, request):
+        hosptial_intr = HosptialIntr.object.all()
+        return render(request, "hosptial_intr.html", locals())
+
+
+class DoctorIntrView(View):
+    """
+    医生介绍
+    """
+    def get(self, request):
+        doctors = DoctorInfo.objects.all()
+        return render(request, "doctor_intr.html", locals())
+
+
 class RegisterHistoryView(View):
     def get(self, request, register_id):
         # 查询挂号记录
         user_register = RegisterInfo.objects.get(id=register_id)
         return render(request, "register_success.html", locals())
+
+
+class QueryCodeView(View):
+    """
+    查询挂号序号和确认码
+    """
+    def get(self, request):
+        schdules = Schedule.objects.all()
+        render(request, "query_code.html", locals())
+
+    def post(self, request):
+        fun_code = request.POST.get('fun_code', 0)
+        data_dict = {'status':'fail'}
+        #查询当前可以出具的编号
+        if fun_code == 1:
+            data_dict['status'] = 'success'
+            schedule_id = request.POST.get('schdule', 0)
+            schedule = Schedule.objects.get(id=schedule_id)
+            leave_num = schedule.leave_num
+            schedule.leave_num -= 1
+            schedule.save()
+            data_dict['leave_num'] = leave_num - 1
+        #根据挂号确认码查询并修改挂号状态
+        elif fun_code == 2:
+            data_dict['status'] = 'success'
+            reg_code = request.POST.get('reg_code', 0)
+            reg_info = RegisterInfo.objects.get(register_code=reg_code)
+            reg_info.status = 3
+            reg_info.save()
+        else:
+            pass
+
+        json_data = json.dumps(data_dict)
+        return HttpResponse(json_data, content_type='application/json')
+

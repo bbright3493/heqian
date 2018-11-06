@@ -271,5 +271,17 @@ MENU_DATA = {
                             'name': '我的挂号',
                             'url': MENU_URL % ('http://%s/wx/register_history_list/' % HOST)
                         }]
+                },{
+                    'name': '禾乾介绍',
+                    'sub_button': [
+                        {
+                            'type': 'view',
+                            'name': '医院特色',
+                            'url': MENU_URL % ('http://%s/wx/hospital_intr/' % HOST)
+                        },{
+                            'type': 'view',
+                            'name': '医生风采',
+                            'url': MENU_URL % ('http://%s/wx/doctor_intr/' % HOST)
+                        }]
                 }
             ]}

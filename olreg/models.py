@@ -41,6 +41,7 @@ class RegRecord(models.Model):
         verbose_name = '消费记录'
         verbose_name_plural = verbose_name
 
+
 class HospitalArea(models.Model):
     """
     医院区域
@@ -55,8 +56,6 @@ class HospitalArea(models.Model):
     class Meta:
         verbose_name = '病区信息'
         verbose_name_plural = verbose_name
-
-
 
 
 class SectionInfo(models.Model):
@@ -117,6 +116,13 @@ class Schedule(models.Model):
     register_num = models.IntegerField(default=50, verbose_name='预留号数')
     leave_num = models.IntegerField(default=50, verbose_name='剩余号数')
 
+    schedule_type = (
+        (1, "上午"),
+        (2, "下午")
+    )
+    type = models.SmallIntegerField(choices=schedule_type, default=1, verbose_name='排班类型')
+
+
     def __str__(self):
         return  '%s-%s'%(self.doctor.name, str(self.date))
 
@@ -136,6 +142,7 @@ class RegisterInfo(models.Model):
     status_choices = (
         (1, "未支付"),
         (2, "已支付"),
+        (3, "已出号")
     )
     status = models.SmallIntegerField(choices=status_choices, default=1, verbose_name='挂号状态')
     register_time = models.DateTimeField(auto_now_add=True, verbose_name='挂号时间', )
@@ -149,4 +156,16 @@ class RegisterInfo(models.Model):
         verbose_name_plural = verbose_name
 
 
+class HosptialIntr(models.Model):
+    """
+    医院介绍
+    """
+    intr = models.CharField(max_length=5000, verbose_name='医院介绍')
+    image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
 
+    def __str__(self):
+        return "医院介绍"
+
+    class Meta:
+        verbose_name = '医院介绍'
+        verbose_name_plural = verbose_name

@@ -33,11 +33,13 @@ urlpatterns = [
     url(r'^hospital_list/$', views.HospitalListView.as_view(), name='hospital_list'),
     url(r'^section_list/(?P<area_id>\d+)/$', views.SectionListView.as_view(), name='section_list'),
     url(r'^doctor_list/(?P<section>\d+)/$', views.DoctorListView.as_view(), name='doctor_list'),
-    url(r'^register_detail/(?P<schedule_id>\d+)/$', views.RegisterDetailView.as_view(), name='register_detail'),
+    url(r'^register_detail/(?P<doctor_id>\d+)/$', views.RegisterDetailView.as_view(), name='register_detail'),
     url(r'^register_identify/(?P<schedule_id>\d+)/$', views.RegisterIdentifyView.as_view(), name='register_identify'),
     url(r'^ajax_doctor/$', views.AjaxDoctorList.as_view(), name='ajax_doctor'),
     url(r'^register_success/(?P<user_id>\d+)/(?P<schedule_id>\d+)/$', views.RegisterSuccessView.as_view(), name='register_success'),
     url(r'^register_history_list/$', views.RegisterHistoryListView.as_view(), name='register_history_list'),
     url(r'^register_history_info/(?P<register_id>\d+)/$', views.RegisterHistoryView.as_view(), name='register_history_info'),
+    url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
+    url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
 ]
 
