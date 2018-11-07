@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>医生介绍</title>
-</head>
-<body>
+<html>
 
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_rp4drjzw9.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+		<title>名医介绍</title>
+	</head>
+
+	<body>
+		<div class="warp pt30 bg-f4e5bc plr30">
+			<h1 class="mb20 fz34">名医介绍</h1>
+			<ul>
+                {% for doctor in doctors %}
+				<li class="doc-info-img mb20 pt30">
+					<img src="" alt="" class="mb20"/>
+					<h2 class="fz32 tx-c c-8b5146 mt30 mb20">{{ doctor.name }}</h2>
+					<p class="fz28 c-8b5146 plr20">{{ doctor.content }}</p>
+				</li>
+                {% endfor %}
+			</ul>
+		</div>
+	</body>
+
 </html>
