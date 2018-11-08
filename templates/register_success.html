@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>挂号成功 请按时就诊 如需退费 请提前至现场凭确认码退费 过期不候</p>
-<p>挂号人{{ user_register.user.nickname }}</p>
-<p>挂号时间{{ user_register.register_time }}</p>
-<p>就诊医生{{ user_register.schedule.doctor.name }}</p>
-<p>序号{{ user_register.num }}</p>
-<p>确认码{{ user_register.register_code }}</p>
-<p>就诊科室{{ user_register.schedule.section.name }}</p>
-</body>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_rp4drjzw9.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+		<title>挂号详情</title>
+	</head>
+	<body>
+		<div class="warp pt30 bg-f4e5bc">
+			<div class="history-header mzub mzub-ac plr30 mb20">
+					<i class="iconfont icon-shenqingchenggonggougouicon fz100 c-8b5146 mr10"></i>
+				<div class="mzub-f1">
+					<div class="mzub mzub-ac mb20">
+						<p class="mzub-f1 fz34 c-8b5146">挂号成功</p>
+						<p class="fz24 c-605831"></p>
+					</div>
+					<p class="c-9f957c fz28">请提前15分钟前往挂号诊室就诊，无需重新取号，如需退号退费，请到窗口补打发票，现场退费。逾期作废，将不再退号退费，请按时就诊。</p>
+				</div>
+			</div>
+			<ul class="department-list">
+				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">挂号人</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.user.nickname }}</p>
+				</li>
+				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">挂号时间</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.register_time }}</p>
+				</li>
+				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">就诊医生</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.schedule.doctor.name }}</p>
+				</li>
+				
+				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">序号</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.num }}</p>
+				</li>
+				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">确认码</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.register_code }}</p>
+				</li>
+				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">就诊科室</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.schedule.section.name }}</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+
 </html>

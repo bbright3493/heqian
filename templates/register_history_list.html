@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% for reg_info in reg_infos %}
+<html>
 
-    <a href="{{ reverse('register_history_info', kwargs={'register_id': reg_info.id}) }}">{{ reg_info.user.nickname }}-{{ reg_info.register_time }}</a>
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_rp4drjzw9.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+		<title>历史记录</title>
+	</head>
 
-{% endfor %}
+	<body>
+		<div class="warp pt30 bg-f4e5bc">
+			<ul class="department-list">
+                {% for reg_info in reg_infos %}
+				<li class="bb ptb20 bg-fff6cf mb20 plr30">
+					<a href="{{ reverse('register_history_info', kwargs={'register_id': reg_info.id}) }}" class="mzub mzub-ac">
+						<div class="mzub-f1">
+							<p class="fz30 c-504d3e">{{ reg_info.schedule.section.name }}</p>
+							<p class="fz24 c-9f957c">{{ reg_info.schedule.doctor.name }}</p>
+							<p class="fz24 c-9f957c">{{ reg_info.register_time }}</p>
+						</div>
+						<div class="mzub mzub-ac">
+							<!--<div class="mzub mzub-pac"><i class="iconfont icon-shenqingchenggonggougouicon fz30 c-8b5146 mr10"></i></div>-->
 
-</body>
+							<p class="mr10 fz24 c-504d3e">挂号成功</p>
+						</div>
+						<div class="mzub mzub-pac"><i class="iconfont icon-next fz24 c-504d3e"></i></div>
+
+					</a>
+				</li>
+                {% endfor %}
+			</ul>
+
+		</div>
+	</body>
+
 </html>
