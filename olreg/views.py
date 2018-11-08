@@ -434,7 +434,7 @@ class RegisterHistoryListView(View):
             print("该openid无注册")
         else:
             # 查询该用户的所有挂号记录
-            reg_infos = RegisterInfo.objects.filter(user=user)
+            reg_infos = RegisterInfo.objects.filter(user=user).order_by('schedule__registerinfo__register_time')
 
         return render(request, "register_history_list.html", locals())
 
