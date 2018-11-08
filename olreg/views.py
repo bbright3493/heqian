@@ -394,12 +394,12 @@ class RegisterSuccessView(View):
         # 修改排班信息 剩余号码减1
         schedule.leave_num -= 1
         schedule.save()
-        # 生成挂号确认码
-        for i in range(4):
+        # 生成挂号确认码 序号+上午或下午号+排班日期+随机码
+        for i in range(3):
             random_str.append(random.choice(seed))
         # salt = str(reg_num) + random_str
         salt = ''.join(random_str)
-        salt = str(reg_num) + salt
+        salt = str(reg_num) + str(schedule.type) + str(schedule.date.day) + salt
         print(salt)
         # 保存记录
         user_register = RegisterInfo.objects.create(user=user, schedule=schedule)
