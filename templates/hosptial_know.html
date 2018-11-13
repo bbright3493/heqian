@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <!--修复ios qq浏览器 数字显示-->
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_rp4drjzw9.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+    <title>医馆简介</title>
+</head>
+
+<body>
+{% for hosp in  hosptial_intr %}
+<div class="warp pt30 bg-f4e5bc plr30">
+    <h1 class="mb20 fz34">医馆文化</h1>
+    <p class="fz24">{{ hosp.culture}}</p>
+</div>
+
+{% endfor %}
+</body>
+
+</html>

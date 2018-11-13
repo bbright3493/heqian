@@ -276,12 +276,16 @@ MENU_DATA = {
                     'sub_button': [
                         {
                             'type': 'view',
-                            'name': '医院特色',
+                            'name': '医馆特色',
                             'url': MENU_URL % ('http://%s/wx/hospital_intr/' % HOST)
                         },{
                             'type': 'view',
                             'name': '医生风采',
                             'url': MENU_URL % ('http://%s/wx/doctor_intr/' % HOST)
+                        },{
+                            'type': 'view',
+                            'name': '医馆文化',
+                            'url': MENU_URL % ('http://%s/wx/hospital_know/' % HOST)
                         }]
                 }
             ]}

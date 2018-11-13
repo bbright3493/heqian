@@ -448,6 +448,15 @@ class HosptialIntrView(View):
         return render(request, "hosptial_intr.html", locals())
 
 
+class HosptialKnowView(View):
+    """
+    医馆文化
+    """
+    def get(self, request):
+        hosptial_intr = HosptialIntroduce.objects.all()
+        return render(request, "hosptial_know.html", locals())
+
+
 class DoctorIntrView(View):
     """
     医生介绍
