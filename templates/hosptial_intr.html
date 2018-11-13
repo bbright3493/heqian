@@ -15,30 +15,21 @@
 
 <body>
 {% for hosp in  hosptial_intr %}
-<div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">医馆简介</h1>
-    <p class="fz24">{{ hosp.intr}}</p>
-</div>
-<div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">医师资源</h1>
-    <p class="fz24">{{ hosp.doctor_intr }}</p>
-</div>
-<div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">主营科室及项目</h1>
-    <p class="fz24">{{ hosp.section_intr }}</p>
-</div>
-<div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">药材质量保障</h1>
-    <p class="fz24">{{ hosp.medicinal_intr }}</p>
-</div>
-<div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">服务理念</h1>
-    <p class="fz24">{{ hosp.server_intr }}</p>
-</div>
-<div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">预约热线</h1>
-    <p class="fz24">{{ hosp.contract_intr }}</p>
-</div>
+    <div class="warp pt30 bg-f4e5bc plr30">
+        <h1 class="mb20 fz34">医馆简介</h1>
+        <p class="fz24">{{ hosp.intr }}</p>
+        <h1 class="mb20 fz34">医师资源</h1>
+        <p class="fz24">{{ hosp.doctor_intr }}</p>
+        <h1 class="mb20 fz34">主营科室及项目</h1>
+        <p class="fz24">{{ hosp.section_intr }}</p>
+        <h1 class="mb20 fz34">药材质量保障</h1>
+        <p class="fz24">{{ hosp.medicinal_intr }}</p>
+        <h1 class="mb20 fz34">服务理念</h1>
+        <p class="fz24">{{ hosp.server_intr }}</p>
+        <h1 class="mb20 fz34">预约热线</h1>
+        <p class="fz24">{{ hosp.contract_intr }}</p>
+    </div>
+
 {% endfor %}
 </body>
 
