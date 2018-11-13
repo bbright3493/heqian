@@ -14,13 +14,16 @@
 </head>
 
 <body>
-{% for hosp_cul in  hosptial_cul %}
+
 <div class="warp pt30 bg-f4e5bc plr30">
-    <h1 class="mb20 fz34">{{ hosp_cul.title }}</h1>
-    <p class="fz24">{{ hosp_cul.content}}</p>
+    {% for hosp_cul in  hosptial_cul %}
+        <h1 class="mb20 fz34">{{ hosp_cul.title }}</h1>
+        <p class="fz24">{{ hosp_cul.content }}</p>
+        <br>
+    {% endfor %}
 </div>
 
-{% endfor %}
+
 </body>
 
 </html>
