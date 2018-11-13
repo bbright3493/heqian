@@ -4,23 +4,116 @@
     <meta charset="UTF-8">
     <title>禾乾医疗出号系统</title>
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<p>使用说明</p>
+<p class="fz20 c-504d3e">使用说明</p>
 <br>
-<p>排班信息</p>
+<p class="fz20 c-504d3e">排班信息</p>
 <br>
-{% for sch in schdules %}
-    <p>医生{{ sch.doctor.name }}</p>-<p>班次{{ sch.get_type_display() }}</p>-<p>序号{{ sch.leave_num }}</p>
-    <button>查询序号</button>-
-    <button>确认出号</button>
-{% endfor %}
+
+<ul class="department-list">
+    {% for sch in schdules %}
+        <li class="bb ptb10 mzub mzub-ac">
+            <p class="fz30 c-504d3e">医生{{ sch.doctor.name }}-班次{{ sch.get_type_display() }}</p>
+            <div class="sureBtn query">查询序号
+            </div>
+            <div class="sureBtn identify">确认出号
+            </div>
+            <p class="scheduleid" hidden="hidden">{{ sch.id }}</p>
+        </li>
+    {% endfor %}
+</ul>
 
 <div class="list-search plr20 mzub mzub-ac mb30 bg-e4d2ac">
     <i class="iconfont icon-sousuo fz24 c33 mr10"></i>
-    <input class="c-606266 fz14" type="text" name="" id="" value="" placeholder="输入挂号确认码查询"/>
-    <input type="submit">查询并出号
+    <input class="c-606266 fz14" type="text" name="" id="query_input" value="" placeholder="输入挂号确认码查询"/>
+    <input class="query_code c-606266 fz14" type="submit" value="查询确认码">
 </div>
 
 </body>
+
+<script type="text/javascript">
+    $('.sureBtn').click(function () {
+        var sch_id = $(this).parent().children('.scheduleid').text();
+
+        var index = $(this).index();
+        if (index == 1) {
+            //查询序号
+            $.ajax({
+                type: "POST",
+                data: {'schedule_id': sch_id, 'fun_code': index},
+                url: "{{ reverse('query_code')}}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致,或者直接写http地址
+                cache: false,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (ret) {
+
+                    alert('当前可以出号' + ret.leave_num + '号')
+
+                },
+                error: function () {
+                    alert("false");
+                }
+
+            });
+        } else if (index == 2) {
+            //确认序号
+            $.ajax({
+                type: "POST",
+                data: {'schedule_id': sch_id, 'fun_code': index},
+                url: "{{ reverse('query_code')}}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致,或者直接写http地址
+                cache: false,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (ret) {
+
+                    alert(ret.leave_num + '号已出，' + '请使用挂号系统出号')
+
+                },
+                error: function () {
+                    alert("false");
+                }
+
+            });
+        }
+
+    })
+
+    $('.query_code').click(function () {
+
+        var input_code = $('#query_input').val();
+        if (input_code) {
+            $.ajax({
+                type: "POST",
+                data: {'reg_code': input_code, 'fun_code': 3},
+                url: "{{ reverse('query_code')}}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致,或者直接写http地址
+                cache: false,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (ret) {
+                    if(ret.type==2)
+                        reg_time = '下午'
+                    else
+                        reg_time = '上午'
+                    alert('查询到：' + '就诊人：' + ret.name + '-' + '就诊医生' + ret.doctor + '-' + '就诊时间' + reg_time + '-' + '就诊序号' + ret.num);
+
+
+                },
+                error: function () {
+                    alert("false");
+                }
+
+            });
+        } else {
+            alert('请输入挂号确认码')
+        }
+    })
+
+</script>
+
+
 </html>

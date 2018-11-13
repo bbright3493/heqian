@@ -156,11 +156,38 @@ class RegisterInfo(models.Model):
         verbose_name_plural = verbose_name
 
 
-class HosptialIntr(models.Model):
+# class HosptialIntr1(models.Model):
+#     """
+#     医院介绍
+#     """
+#     intr = models.CharField(max_length=1000, verbose_name='医院介绍', default='')
+#     doctor_intr = models.CharField(max_length=500, verbose_name='医师资源', default='')
+#     section_intr = models.CharField(max_length=500, verbose_name='特色科室', default='')
+#     medicinal_intr = models.CharField(max_length=500, verbose_name='药材介绍', default='')
+#     server_intr = models.CharField(max_length=500, verbose_name='服务介绍',default='')
+#     contract_intr = models.CharField(max_length=300, verbose_name='联系方式', default='')
+#     culture = models.CharField(max_length=1000, verbose_name='医馆文化', default='')
+#     image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
+#
+#     def __str__(self):
+#         return "医院介绍"
+#
+#     class Meta:
+#         verbose_name = '医院介绍'
+#         verbose_name_plural = verbose_name
+
+
+class HosptialIntroduce(models.Model):
     """
     医院介绍
     """
-    intr = models.CharField(max_length=5000, verbose_name='医院介绍')
+    intr = models.CharField(max_length=1000, verbose_name='医院介绍', default='')
+    doctor_intr = models.CharField(max_length=500, verbose_name='医师资源', default='')
+    section_intr = models.CharField(max_length=500, verbose_name='特色科室', default='')
+    medicinal_intr = models.CharField(max_length=500, verbose_name='药材介绍', default='')
+    server_intr = models.CharField(max_length=500, verbose_name='服务介绍',default='')
+    contract_intr = models.CharField(max_length=300, verbose_name='联系方式', default='')
+    culture = models.CharField(max_length=1000, verbose_name='医馆文化', default='')
     image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
 
     def __str__(self):

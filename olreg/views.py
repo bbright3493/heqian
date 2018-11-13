@@ -444,7 +444,7 @@ class HosptialIntrView(View):
     医院介绍
     """
     def get(self, request):
-        hosptial_intr = HosptialIntr.objects.all()
+        hosptial_intr = HosptialIntroduce.objects.all()
         return render(request, "hosptial_intr.html", locals())
 
 
@@ -474,24 +474,42 @@ class QueryCodeView(View):
         return render(request, "query_code.html", locals())
 
     def post(self, request):
-        fun_code = request.POST.get('fun_code', 0)
+        fun_code = int(request.POST.get('fun_code', 0))
         data_dict = {'status':'fail'}
         #查询当前可以出具的编号
         if fun_code == 1:
             data_dict['status'] = 'success'
-            schedule_id = request.POST.get('schdule', 0)
+            schedule_id = int(request.POST.get('schedule_id', 0))
+            schedule = Schedule.objects.get(id=schedule_id)
+            data_dict['leave_num'] = schedule.register_num - schedule.leave_num + 1
+            # schedule.leave_num -= 1
+            # schedule.save()
+            # data_dict['leave_num'] = leave_num - 1
+        elif fun_code == 2:
+            data_dict['status'] = 'success'
+            schedule_id = int(request.POST.get('schedule_id', 0))
             schedule = Schedule.objects.get(id=schedule_id)
             leave_num = schedule.leave_num
             schedule.leave_num -= 1
             schedule.save()
-            data_dict['leave_num'] = leave_num - 1
+            data_dict['leave_num'] = schedule.register_num - leave_num + 1
         #根据挂号确认码查询并修改挂号状态
-        elif fun_code == 2:
+        elif fun_code == 3:
             data_dict['status'] = 'success'
             reg_code = request.POST.get('reg_code', 0)
-            reg_info = RegisterInfo.objects.get(register_code=reg_code)
-            reg_info.status = 3
-            reg_info.save()
+            try:
+                reg_info = RegisterInfo.objects.get(register_code=reg_code)
+                data_dict['status'] = 'success'
+                data_dict['name'] = reg_info.user.nickname
+                data_dict['num'] = reg_info.num
+                data_dict['doctor'] = reg_info.schedule.doctor.name
+                data_dict['type'] = reg_info.schedule.type
+                data_dict['section'] = reg_info.schedule.section.name
+                reg_info.status = 3
+                reg_info.save()
+            except:
+                data_dict['status'] = 'fail'
+
         else:
             pass
 
