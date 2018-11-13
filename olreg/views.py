@@ -453,7 +453,7 @@ class HosptialKnowView(View):
     医馆文化
     """
     def get(self, request):
-        hosptial_intr = HosptialIntroduce.objects.all()
+        hosptial_cul = HosptialCulture.objects.all()
         return render(request, "hosptial_know.html", locals())
 
 
