@@ -41,5 +41,8 @@ urlpatterns = [
     url(r'^register_history_info/(?P<register_id>\d+)/$', views.RegisterHistoryView.as_view(), name='register_history_info'),
     url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
     url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
+    url(r'^hospital_know/$', views.HosptialKnowView.as_view(), name='hospital_know'),
 ]
+
+
 
