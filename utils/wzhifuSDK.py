@@ -209,7 +209,8 @@ class Common_util_pub(object):
     def arrayToXml(self, arr):
         """array转xml"""
         xml = ["<xml>"]
-        for k, v in arr.iteritems():
+        # for k, v in arr.iteritems():
+        for k, v in arr.items():
             if v.isdigit():
                 xml.append("<{0}>{1}</{0}>".format(k, v))
             else:
