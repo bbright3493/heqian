@@ -154,7 +154,7 @@ class RechargeUnifiedorder(View):
             pay_type = request.POST.get("pay_type")
             pay_amount = request.POST.get("pay_amount")
             # 创建订单并获取订单号
-            order_id = hashlib.md5(str(int(time.time())) + openid).hexdigest()
+            order_id = hashlib.md5(str(int(time.time())) + openid).encode("utf8").hexdigest()
             # 根据openid找到对应用户
             try:
                 user = User.objects.get(openid=openid)
