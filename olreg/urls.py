@@ -42,9 +42,9 @@ urlpatterns = [
     url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
     url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
     url(r'^hospital_know/$', views.HosptialKnowView.as_view(), name='hospital_know'),
-    url(r'^recharge/$', views.recharge, name='recharge'),
-    url(r'^recharge/unifiedorder/$', views.recharge_unifiedorder, name='recharge_unifiedorder'),
-    url(r'^recharge/payback/$', views.recharge_payback, name='recharge_payback'),
+    url(r'^recharge/$', views.Recharge, name='recharge'),
+    url(r'^recharge/unifiedorder/$', views.RechargeUnifiedorder, name='recharge_unifiedorder'),
+    url(r'^recharge/payback/$', views.RechargePayback, name='recharge_payback'),
 ]
 
 

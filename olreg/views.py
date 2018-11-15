@@ -143,7 +143,7 @@ class Recharge(View):
         return render(request, "recharge.html", locals())
 
 
-class Recharge_unifiedorder(View):
+class RechargeUnifiedorder(View):
     @auth_openid
     @csrf_exempt
     def post(self, request):
