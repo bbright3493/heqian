@@ -55,8 +55,6 @@
 
 <script type="text/javascript">
     $('.sureBtn').click(function () {
-        function unifiedorder() {
-
             $.ajax({
                 url:"/wx/recharge/unifiedorder/",
                 type: "POST",
@@ -96,7 +94,7 @@
                     }
                 }
             });
-        }
+
         //window.location.href = "{{ reverse('register_success', kwargs={'user_id': user.id, 'schedule_id':schedule.id}) }}";
     })
 
