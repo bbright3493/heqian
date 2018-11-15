@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^create_menu/$', views.CreateMenuView.as_view(), name='wechat_create_menu'),
     url(r'^MP_verify_aUoP8juHMf0Ow1it.txt$', views.MP_verify_aUoP8juHMf0Ow1it.as_view(), name='MP_verify_aUoP8juHMf0Ow1it'),
     url(r'^recharge/$', views.Recharge.as_view(), name='recharge'),
-    url(r'^recharge/unifiedorder/$', views.Recharge_unifiedorder.as_view(), name='recharge_unifiedorder'),
+    url(r'^recharge/unifiedorder/$', views.RechargeUnifiedorder.as_view(), name='recharge_unifiedorder'),
     url(r'^recharge/payback/$', views.RechargePayback.as_view(), name='recharge_payback'),
     url(r'^hospital_list/$', views.HospitalListView.as_view(), name='hospital_list'),
     url(r'^section_list/(?P<area_id>\d+)/$', views.SectionListView.as_view(), name='section_list'),
@@ -42,9 +42,7 @@ urlpatterns = [
     url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
     url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
     url(r'^hospital_know/$', views.HosptialKnowView.as_view(), name='hospital_know'),
-    url(r'^recharge/$', views.Recharge, name='recharge'),
-    url(r'^recharge/unifiedorder/$', views.RechargeUnifiedorder, name='recharge_unifiedorder'),
-    url(r'^recharge/payback/$', views.RechargePayback, name='recharge_payback'),
+
 ]
 
 
