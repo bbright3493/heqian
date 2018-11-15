@@ -201,7 +201,7 @@ class Common_util_pub(object):
         #签名步骤二：在string后加入KEY
         String = "{0}&key={1}".format(String,WxPayConf_pub.KEY)
         #签名步骤三：MD5加密
-        String = hashlib.md5(String).hexdigest()
+        String = hashlib.md5(String.encode('utf-8')).hexdigest()
         #签名步骤四：所有字符转为大写
         result_ = String.upper()
         return result_
