@@ -149,6 +149,7 @@ class Recharge_unifiedorder(View):
     def post(self, request):
         openid = request.session.get("openid", None)
         try:
+            print("get charge openid")
             # 获取消费类型和金额
             pay_type = request.POST.get("pay_type")
             pay_amount = request.POST.get("pay_amount")

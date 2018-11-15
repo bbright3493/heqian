@@ -248,10 +248,12 @@ TOKEN = "heqianyiliao"
 ENCRYPT_MODE = "normal"
 ENCODING_AES_KEY = "7cL65X3v9cjUAnksm3DfdONajnHLKBWCkD0ky9n7B6f"
 HOST = "www.52ky.net"
+#商户id
+MCHID = "1517767451"
 
 #待修改
 PAY_KEY = "RIKrrMPqEKaGj23t5YvyNujZ0LaiuBzA"
-MCHID = "1470404202"
+
 
 
 
