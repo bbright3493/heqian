@@ -111,7 +111,7 @@ class UrllibClient(object):
 
     def postXml(self, xml, url, second=30):
         """不使用证书"""
-        data = urllib.request.urlopen(url, xml, timeout=second).read().decode('utf-8')
+        data = urllib.request.urlopen(url, xml, timeout=second).read().encode(encoding="utf-8")
         return data
 
     def postXmlSSL(self, xml, url, second=30):
