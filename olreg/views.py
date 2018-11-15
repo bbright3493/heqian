@@ -154,9 +154,12 @@ class RechargeUnifiedorder(View):
             pay_type = request.POST.get("pay_type")
             pay_amount = request.POST.get("pay_amount")
             #python3下字符串为unicode类型 hash传递需要utf-8类型，需要进行转换
-            convert_str = (str(int(time.time())) + openid).encode('utf-8')
+            convert_str = (str(int(time.time())) + openid)
             # 创建订单并获取订单号
-            order_id = hashlib.md5(convert_str).hexdigest()
+            md5 = hashlib.md5()
+            md5.update(convert_str.encode('utf-8'))
+            order_id = md5.hexdigest()
+            # order_id = hashlib.md5(convert_str).hexdigest()
             # 根据openid找到对应用户
             try:
                 user = User.objects.get(openid=openid)
