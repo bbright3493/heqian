@@ -87,22 +87,18 @@
         </div>
     </div>
     <div class="doc-scheduling-container">
-        <p class="tx-c c66 fz24">介绍</p>
+        <p class="tx-c c66 fz24">{{ schedule.doctor.content }}</p>
     </div>
 {#    <p class="tx-c c66 fz24">暂无数据~~~</p>#}
 </div>
 </body>
-{#<script type="text/javascript">#}
-{#    $('.doc-scheduling-tab').click(function () {#}
-{#        var index = $(this).index();#}
-{#        console.log($(this))#}
-{#        $('.doc-scheduling-container').eq(index).addClass('active').siblings().removeClass('active');#}
-{#        $(this).addClass('active').siblings().removeClass('active');#}
-{#    })#}
-{#    function goInfo() {#}
-{##}
-{#        window.location.href = "{{ auth_url(reverse('register_identify')) }}"#}
-{#    }#}
-{#    ;#}
-{#</script>#}
+<script type="text/javascript">
+    $('.doc-scheduling-tab').click(function () {
+        var index = $(this).index();
+        console.log($(this))
+        $('.doc-scheduling-container').eq(index).addClass('active').siblings().removeClass('active');
+        $(this).addClass('active').siblings().removeClass('active');
+    })
+
+</script>
 </html>
