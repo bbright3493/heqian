@@ -13,14 +13,14 @@
 	</head>
 
 	<body>
-		<div class="warp pt30 bg-f4e5bc plr30">
-			<h1 class="mb20 fz34">名医介绍</h1>
+		<div class="pt30 bg-f4e5bc">
+			<h1 class="mb20 fz34 plr30">名医介绍</h1>
 			<ul>
                 {% for doctor in doctors %}
-				<li class="doc-info-img mb20 pt30">
-					<img src="" alt="" class="mb20"/>
+				<li class="doc-info-img pt60 plr30">
+					<img src=" " alt="此处放置医生照片" class="mb20"/>
 					<h2 class="fz32 tx-c c-8b5146 mt30 mb20">{{ doctor.name }}</h2>
-					<p class="fz28 c-8b5146 plr20">{{ doctor.content }}</p>
+					<p class="fz14 c-8b5146 plr60">{{ doctor.content }}</p>
 				</li>
                 {% endfor %}
 			</ul>
