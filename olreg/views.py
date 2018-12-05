@@ -452,7 +452,7 @@ class HosptialIntrView(View):
     def get(self, request):
         hosptial_intr = HosptialIntroduce.objects.all().first()
         hosptial_areas = HospitalArea.objects.all()
-        hosp_banners = HosptialBanner.objects.all()
+        hosp_banners = HosptialBanner.objects.all().order_by('num')
         return render(request, "hosptial_intr.html", locals())
 
 
