@@ -450,7 +450,9 @@ class HosptialIntrView(View):
     医院介绍
     """
     def get(self, request):
-        hosptial_intr = HosptialIntroduce.objects.all()
+        hosptial_intr = HosptialIntroduce.objects.all().first()
+        hosptial_areas = HospitalArea.objects.all()
+        hosp_banners = HosptialBanner.objects.all()
         return render(request, "hosptial_intr.html", locals())
 
 

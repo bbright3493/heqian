@@ -206,6 +206,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 .bb { border-bottom: 1px solid #dcdbd8; }
 
+.mtb20 { margin-top: 2.6666666667vw; margin-bottom: 2.6666666667vw; }
+
+.ptb20 { padding-top: 2.6666666667vw; padding-bottom: 2.6666666667vw; }
+
 .warp { position: absolute; top: 0; bottom: 0; left: 0; right: 0; overflow: auto; z-index: 1; background: url("../img/bg-img.jpg") no-repeat; background-size: 25.2vw 32.4vw; background-position: bottom 10px right 10px; }
 
 .warp-bg { position: absolute; top: 0; bottom: 0; left: 0; right: 0; overflow: auto; background-color: #fff; }
@@ -281,3 +285,40 @@ table { border-collapse: collapse; border-spacing: 0; }
 .plr60 { padding-left: 8vw; padding-right: 8vw; }
 
 .pt60 { padding-top: 8vw; }
+
+.swiper-slide-img { height: 69.3333333333vw; width: 100%; background: #eeeeee; }
+.swiper-slide-img img { display: block; width: 100%; min-height: 100%; }
+
+.c-5a6174 { color: #5a6174; }
+
+.c66 { color: #666666; }
+
+.c-e9894f { color: #e9894f; }
+
+.fw-b { font-weight: bold; }
+
+.new-doc-lis-img { width: 16vw; height: 24vw; border-radius: 2.6666666667vw; background-color: #f6f6f6; overflow: hidden; img-display: block; img-width: 100%; img-min-height: 100%; }
+
+.new-bgc { background-color: #f4f3ee; }
+
+.new-doc-lis-item { border-radius: 1.3333333333vw; background-color: #fff; padding: 5.3333333333vw 4vw; overflow: hidden; }
+
+.doc-pro { width: 100%; height: 13.3333333333vw; overflow: hidden; }
+
+.new-doc-tag { border-radius: 2.6666666667vw; background-color: #eff0f2; color: #9196a9; font-size: 3.2vw; padding: 0.6666666667vw 1.3333333333vw; }
+
+.poa-b0 { position: absolute; bottom: 0; left: 0; }
+
+.new-doc-banner { width: 100%; background-color: #f7ebdd; padding: 5.3333333333vw 4vw; overflow: hidden; }
+.new-doc-banner .new-doc-lis-img { width: 18.6666666667vw; height: 26.6666666667vw; border-radius: 2.6666666667vw; background-color: #f6f6f6; overflow: hidden; img-display: block; img-width: 100%; img-min-height: 100%; }
+.new-doc-banner .new-doc-tag01 { border-radius: 2.6666666667vw; background-color: #fef1e9; color: #f47c30; padding: 0.6666666667vw 1.3333333333vw; font-size: 3.2vw; }
+.new-doc-banner .new-doc-tag02 { border-radius: 2.6666666667vw; background-color: #eff4fa; color: #5697cf; padding: 0.6666666667vw 1.3333333333vw; font-size: 3.2vw; }
+
+.c-323433 { color: #323433; }
+
+.bg-fef1e9 { background-color: #fef1e9; }
+
+.bgff { background-color: #ffffff; }
+
+.open-info { height: 18.6666666667vw; overflow: hidden; }
+.open-info.active { height: auto; }

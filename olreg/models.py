@@ -186,14 +186,30 @@ class HosptialIntroduce(models.Model):
     section_intr = models.CharField(max_length=500, verbose_name='特色科室', default='')
     medicinal_intr = models.CharField(max_length=500, verbose_name='药材介绍', default='')
     server_intr = models.CharField(max_length=500, verbose_name='服务介绍',default='')
-    contract_intr = models.CharField(max_length=300, verbose_name='联系方式', default='')
-    image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
+    work_time = models.CharField(max_length=300, verbose_name='营业时间', default='',help_text='如 9:00---19:00')
+    contract_intr = models.CharField(max_length=300, verbose_name='联系电话', default='')
+    #image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
 
     def __str__(self):
         return "医院介绍"
 
     class Meta:
         verbose_name = '医院介绍'
+        verbose_name_plural = verbose_name
+
+
+class HosptialBanner(models.Model):
+    """
+    医馆轮播图
+    """
+    num = models.IntegerField(default=1, verbose_name='图片序号')
+    image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
+
+    def __str__(self):
+        return "医馆轮播图"
+
+    class Meta:
+        verbose_name = '医馆轮播图'
         verbose_name_plural = verbose_name
 
 

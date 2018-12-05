@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8"/>
-    <!--修复ios qq浏览器 数字显示-->
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="x-rim-auto-match" content="none">
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_rp4drjzw9.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
-    <title>医馆简介</title>
-</head>
+	<head>
 
-<body>
-{% for hosp in  hosptial_intr %}
-    <div class="warp-bg pt30 bg-f4e5bc plr30">
-        <h1 class="mb20 fz34">医馆简介</h1>
-        <p class="fz24">{{ hosp.intr }}</p>
-        <br>
-        <h1 class="mb20 fz34">医师资源</h1>
-        <p class="fz24">{{ hosp.doctor_intr }}</p>
-        <br>
-        <h1 class="mb20 fz34">主营科室及项目</h1>
-        <p class="fz24">{{ hosp.section_intr }}</p>
-        <br>
-        <h1 class="mb20 fz34">药材质量保障</h1>
-        <p class="fz24">{{ hosp.medicinal_intr }}</p>
-        <br>
-        <h1 class="mb20 fz34">服务理念</h1>
-        <p class="fz24">{{ hosp.server_intr }}</p>
-        <br>
-        <h1 class="mb20 fz34">预约热线</h1>
-        <p class="fz24">{{ hosp.contract_intr }}</p>
-    </div>
+		<head>
+			<meta charset="utf-8" />
+			<!--修复ios qq浏览器 数字显示-->
+			<meta name="format-detection" content="telephone=no">
+			<meta http-equiv="x-rim-auto-match" content="none">
+			<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+			<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css" />
+{#			<link rel="stylesheet" href="css/swiper.min.css" />#}
+			<link rel="stylesheet" type="text/css" href="/static/css/swiper.min.css"/>
+            <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
 
-{% endfor %}
-</body>
+		    <script type="text/javascript" src="/static/js/swiper.min.js"></script>
+			<title></title>
+		</head>
+	</head>
+
+	<body>
+		<div class="warp-bg">
+				<div class="swiper-container mb20">
+					<div class="swiper-wrapper">
+                       {% for banner in hosp_banners %}
+						<div class="swiper-slide swiper-slide-img"><img src="{{ banner.image }}" alt=""/></div>
+                       {% endfor %}
+					</div>
+				</div>
+				<div class="plr30">
+				<div class="bb ptb20">
+					<p class="fz30 c-5a6174 fw-b">诊所地址</p>
+                    {% for hosp_area in hosptial_areas %}
+					<p class="fz28 c66">{{ hosp_area.name }}:{{ hosp_area.address }}</p>
+                    {% endfor %}
+				</div>
+				<div class="bb ptb20">
+					<p class="fz30 c-5a6174 fw-b">电话</p>
+					<p class="fz28 c-e9894f">{{ hosptial_intr.contract_intr }}</p>
+				</div>
+				<div class="bb ptb20">
+					<p class="fz30 c-5a6174 fw-b">营业时间</p>
+					<p class="fz28 c66">{{ hosptial_intr.work_time }}</p>
+				</div>
+				<div class="ptb20">
+					<p class="fz30 c-5a6174 fw-b">诊所介绍</p>
+					<p class="fz28 c66">{{ hosptial_intr.intr }}</p>
+				</div>
+				</div>
+		</div>
+	</body>
+	<script>
+		var mySwiper = new Swiper('.swiper-container', {
+			autoplay: true, //可选选项，自动滑动
+			loop: true,
+		})
+	</script>
 
 </html>
