@@ -58,7 +58,7 @@
         $.ajax({
             url: "/wx/recharge/unifiedorder/",
             type: "POST",
-            data: {'pay_type': '0', 'pay_amount': '0.01'},
+            data: {'pay_type': '0', 'pay_amount': '{{ schedule.doctor.price }}'},
             beforeSend: function (xhr, settings) {
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
             },

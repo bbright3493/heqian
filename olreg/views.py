@@ -381,7 +381,7 @@ class RegisterIdentifyView(View):
 
 import random
 
-seed = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+seed = "1234567890abcdefghijklmnopqrstuvwxyz"
 
 
 class RegisterSuccessView(View):

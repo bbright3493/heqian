@@ -116,14 +116,15 @@ class Schedule(models.Model):
     date = models.DateTimeField(verbose_name='排班日期', default = timezone.now)
     section = models.ForeignKey(SectionInfo, verbose_name='排班科室')
     doctor = models.ForeignKey(DoctorInfo, verbose_name='排班医生')
-    register_num = models.IntegerField(default=50, verbose_name='预留号数')
-    leave_num = models.IntegerField(default=50, verbose_name='剩余号数')
+    register_num = models.IntegerField(default=20, verbose_name='预留号数')
+    leave_num = models.IntegerField(default=20, verbose_name='剩余号数')
 
     schedule_type = (
         (1, "上午"),
-        (2, "下午")
+        (2, "下午"),
+        (3, "全天")
     )
-    type = models.SmallIntegerField(choices=schedule_type, default=1, verbose_name='排班类型')
+    type = models.SmallIntegerField(choices=schedule_type, default=3, verbose_name='排班类型')
 
 
     def __str__(self):
