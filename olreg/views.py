@@ -471,7 +471,7 @@ class DoctorIntrView(View):
     """
     def get(self, request):
         doctors = DoctorInfo.objects.all()
-        return render(request, "doctor_intr.html", locals())
+        return render(request, "doctor_list.html", locals())
 
 
 class RegisterHistoryView(View):

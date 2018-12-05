@@ -79,7 +79,9 @@ class DoctorInfo(models.Model):
     医生信息
     """
     name = models.CharField(max_length=20, verbose_name='医生姓名')
+    professor = models.CharField(max_length=20, verbose_name='医生职称', default='')
     content = models.CharField(max_length=2000, verbose_name='医生介绍')
+    expert = models.CharField(max_length=500, verbose_name='医生擅长', default='')
     price = models.IntegerField(default=50, verbose_name='挂号价格')
     image = models.ImageField(upload_to="doctor/%Y/%m", verbose_name=u"医生头像", max_length=200, default='')
 
