@@ -19,14 +19,16 @@ Including another URLconf
 """
 from olreg import views
 from django.conf.urls import include, url
-from django.views.decorators.csrf import  csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
+
 # from .views import AuthView, GetUserInfoView, TestView,  WxSignature
 
 urlpatterns = [
     url(r'^$', csrf_exempt(views.IndexView.as_view()), name='wechat_index'),
-    #url(r'^MP_verify_ffcYyAuLnwzBnn58.txt$', views.MP_verify_ffcYyAuLnwzBnn58, name='MP_verify_ffcYyAuLnwzBnn58'),
+    # url(r'^MP_verify_ffcYyAuLnwzBnn58.txt$', views.MP_verify_ffcYyAuLnwzBnn58, name='MP_verify_ffcYyAuLnwzBnn58'),
     url(r'^create_menu/$', views.CreateMenuView.as_view(), name='wechat_create_menu'),
-    url(r'^MP_verify_aUoP8juHMf0Ow1it.txt$', views.MP_verify_aUoP8juHMf0Ow1it.as_view(), name='MP_verify_aUoP8juHMf0Ow1it'),
+    url(r'^MP_verify_aUoP8juHMf0Ow1it.txt$', views.MP_verify_aUoP8juHMf0Ow1it.as_view(),
+        name='MP_verify_aUoP8juHMf0Ow1it'),
     url(r'^recharge/$', views.Recharge.as_view(), name='recharge'),
     url(r'^recharge/unifiedorder/$', views.RechargeUnifiedorder.as_view(), name='recharge_unifiedorder'),
     url(r'^recharge/payback/$', views.RechargePayback.as_view(), name='recharge_payback'),
@@ -36,15 +38,15 @@ urlpatterns = [
     url(r'^register_detail/(?P<schedule_id>\d+)/$', views.RegisterDetailView.as_view(), name='register_detail'),
     url(r'^register_identify/(?P<schedule_id>\d+)/$', views.RegisterIdentifyView.as_view(), name='register_identify'),
     url(r'^ajax_doctor/$', views.AjaxDoctorList.as_view(), name='ajax_doctor'),
-    url(r'^register_success/(?P<user_id>\d+)/(?P<schedule_id>\d+)/$', views.RegisterSuccessView.as_view(), name='register_success'),
+    url(r'^register_success/(?P<user_id>\d+)/(?P<schedule_id>\d+)/$', views.RegisterSuccessView.as_view(),
+        name='register_success'),
     url(r'^register_history_list/$', views.RegisterHistoryListView.as_view(), name='register_history_list'),
-    url(r'^register_history_info/(?P<register_id>\d+)/$', views.RegisterHistoryView.as_view(), name='register_history_info'),
+    url(r'^register_history_info/(?P<register_id>\d+)/$', views.RegisterHistoryView.as_view(),
+        name='register_history_info'),
     url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
     url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
     url(r'^hospital_know/$', views.HosptialKnowView.as_view(), name='hospital_know'),
     url(r'^developing/$', views.Developing.as_view(), name='hospital_know'),
+    url(r'^doctor_info/(?P<doctor_id>\d+)/$', views.DoctorInfoView.as_view(), name='doctor_info'),
 
 ]
-
-
-

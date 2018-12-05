@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<head>
+			<meta charset="utf-8" />
+			<!--修复ios qq浏览器 数字显示-->
+			<meta name="format-detection" content="telephone=no">
+			<meta http-equiv="x-rim-auto-match" content="none">
+			<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+			<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css" />
+
+            <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+			<title>医生主页</title>
+			<script type="text/javascript" src="/static/js/jquery-3.3.1.min.js">
+			</script>
+		</head>
+	</head>
+
+	<body>
+		<div class="warp-bg new-bgc">
+			<div class="new-doc-banner mzub">
+				<div class="new-doc-lis-img mr20">
+					<img src="/media/{{ doctor.image }}" alt="" />
+				</div>
+				<div class="mzub-f1 por pt30">
+					<div class="mb10"><span class="fz26 fw-b c-323433 mr20">{{ doctor.name }}</span></div>
+					<p class="fz22 c-323433 mzub-te2">{{ doctor.professor }}</p>
+					<div class="mt20">
+						<span class="new-doc-tag01 mr10">医生资格</span>
+						<span class="new-doc-tag02">医生执业</span>
+					</div>
+				</div>
+			</div>
+			<div class="ptb20 bgff plr30 mb20">
+				<p class="fz30 c-5a6174 fw-b">擅长</p>
+				<p class="fz28 c66">{{ doctor.expert }}</p>
+			</div>
+			<div class="new-doc-info ptb20 bgff plr30">
+				<p class="fz30 c-5a6174 fw-b mb10">简介</p>
+				<p class="fz28 c66">{{ doctor.name }}</p>
+				<p class="fz28 c66">{{ doctor.professor }}</p>
+				<p class="fz28 c66 open-info">{{ doctor.content }}</p>
+				<p class="fz24 c66 tx-c ptb20 open-info-btn">展开详情 <i class="iconfont icon-down fz24"></i> </p>
+			</div>
+		</div>
+	</body>
+<script type="text/javascript">
+	var isShow = false
+	$('.open-info-btn').click(function(){
+		console.log(this)
+		if(!isShow){
+			isShow = !isShow
+			$('.open-info').addClass('active')
+		}else{
+			isShow = !isShow
+			$('.open-info').removeClass('active')
+		}
+
+	})
+</script>
+</html>

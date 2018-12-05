@@ -467,11 +467,20 @@ class HosptialKnowView(View):
 
 class DoctorIntrView(View):
     """
-    医生介绍
+    医生列表页
     """
     def get(self, request):
         doctors = DoctorInfo.objects.all()
         return render(request, "doctor_list.html", locals())
+
+
+class DoctorInfoView(View):
+    """
+    医生详情页
+    """
+    def get(self, request, doctor_id):
+        doctor = DoctorInfo.objects.get(id=doctor_id)
+        return render(request, "doctor_info.html", locals())
 
 
 class RegisterHistoryView(View):
