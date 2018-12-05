@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
     url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
     url(r'^hospital_know/$', views.HosptialKnowView.as_view(), name='hospital_know'),
+    url(r'^developing/$', views.Developing.as_view(), name='hospital_know'),
 
 ]
 

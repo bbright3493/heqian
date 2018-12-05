@@ -274,20 +274,40 @@ MENU_DATA = {
                             'url': MENU_URL % ('http://%s/wx/register_history_list/' % HOST)
                         }]
                 },{
-                    'name': '禾乾介绍',
+                    'name': '禾乾官网',
                     'sub_button': [
                         {
                             'type': 'view',
-                            'name': '医馆特色',
+                            'name': '医馆介绍',
                             'url': MENU_URL % ('http://%s/wx/hospital_intr/' % HOST)
                         },{
                             'type': 'view',
-                            'name': '医生风采',
+                            'name': '医生简介',
                             'url': MENU_URL % ('http://%s/wx/doctor_intr/' % HOST)
                         },{
                             'type': 'view',
                             'name': '医馆文化',
                             'url': MENU_URL % ('http://%s/wx/hospital_know/' % HOST)
+                        },{
+                            'type': 'view',
+                            'name': '医馆项目',
+                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                        },{
+                            'type': 'view',
+                            'name': '养生小知识',
+                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                        }]
+                },{
+                    'name': '我的',
+                    'sub_button': [
+                        {
+                            'type': 'view',
+                            'name': '个人中心',
+                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                        },{
+                            'type': 'view',
+                            'name': '联系禾乾',
+                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
                         }]
                 }
             ]}

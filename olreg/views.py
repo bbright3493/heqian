@@ -533,3 +533,8 @@ class QueryCodeView(View):
         json_data = json.dumps(data_dict)
         return HttpResponse(json_data, content_type='application/json')
 
+
+class Developing(View):
+    def get(self, request):
+        return render(request, "developing.html")
+
