@@ -49,6 +49,7 @@ class HospitalArea(models.Model):
     name = models.CharField(max_length=100, verbose_name='病区名称')
     address = models.CharField(max_length=1000, verbose_name='病区地址')
     content = models.CharField(max_length=2000, verbose_name='病区简介')
+    direct = models.CharField(max_length=1000, verbose_name='到达指引', default='')
 
     def __str__(self):
         return str(self.name)

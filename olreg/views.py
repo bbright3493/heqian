@@ -586,4 +586,12 @@ class Developing(View):
         return render(request, "developing.html")
 
 
-
+class HosptialAddressView(View):
+    """
+    医院介绍
+    """
+    def get(self, request):
+        hosptial_intr = HosptialIntroduce.objects.all().first()
+        hosptial_areas = HospitalArea.objects.all()
+        hosp_banners = HosptialBanner.objects.all().order_by('num')
+        return render(request, "hosptial_address.html", locals())
