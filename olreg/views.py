@@ -543,7 +543,33 @@ class QueryCodeView(View):
         return HttpResponse(json_data, content_type='application/json')
 
 
+class HosptialProjectList(View):
+    def get(self, request):
+        projects = HosptialProject.objects.all()
+        return render(request, "医馆项目列表.html", locals())
+
+
+class HosptialProjectView(View):
+    def get(self, request, project_id):
+        project = HosptialProject.objects.get(id=project_id)
+        return render(request, "医馆项目详情.html", locals())
+
+
+class HosptialKnowledgeList(View):
+    def get(self, request):
+        knows = HosptialKnow.objects.all()
+        return render(request, "养生知识列表.html", locals())
+
+
+class HosptialKnowledgeView(View):
+    def get(self, request, know_id):
+        know = HosptialKnow.objects.get(id=know_id)
+        return render(request, "养生知识详情.html", locals())
+
+
 class Developing(View):
     def get(self, request):
         return render(request, "developing.html")
+
+
 

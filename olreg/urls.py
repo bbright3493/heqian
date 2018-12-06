@@ -46,7 +46,13 @@ urlpatterns = [
     url(r'^hospital_intr/$', views.HosptialIntrView.as_view(), name='hospital_intr'),
     url(r'^doctor_intr/$', views.DoctorIntrView.as_view(), name='doctor_intr'),
     url(r'^hospital_know/$', views.HosptialKnowView.as_view(), name='hospital_know'),
-    url(r'^developing/$', views.Developing.as_view(), name='hospital_know'),
+    url(r'^developing/$', views.Developing.as_view(), name='developing'),
     url(r'^doctor_info/(?P<doctor_id>\d+)/$', views.DoctorInfoView.as_view(), name='doctor_info'),
+    url(r'^hospital_knowledge_list/$', views.HosptialKnowledgeList.as_view(), name='hospital_knowledge_list'),
+    url(r'^hospital_project_list/$', views.HosptialProjectList.as_view(), name='hospital_project_list'),
+    url(r'^hospital_knowledge_view/(?P<know_id>\d+)/$', views.HosptialKnowledgeView.as_view(),
+        name='hospital_knowledge_view'),
+    url(r'^hospital_project_view/(?P<project_id>\d+)/$', views.HosptialProjectView.as_view(),
+        name='hospital_project_view'),
 
 ]

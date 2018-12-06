@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="utf-8"/>
+        <!--修复ios qq浏览器 数字显示-->
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="x-rim-auto-match" content="none">
+        <meta name="viewport"
+              content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+        <title>养生小常识</title>
+    </head>
+</head>
+
+<body>
+<div class="warp-bg bgff plr30">
+    <ul class="new-hospital-list">
+        {% for know in knows %}
+            <li class="new-hospital-lis-item bb">
+                <a href="{{ reverse('hospital_knowledge_view', kwargs={'know_id': know.id}) }}" class="mzub">
+                    <div class="new-hospital-list-img mr20">
+                        <img src="/media/{{ know.image }}" alt="添加配图"/>
+                    </div>
+                    <div class="mzub-f1 mzub-te3">
+                        <p class="mzub-te fz24 c-5a6174 mr20 mb10 fw-b">{{ know.title }}</p>
+                        <p class="fz22 c99 mzub-te2">{{ know.content }}</p>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+
+</html>

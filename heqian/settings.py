@@ -291,11 +291,11 @@ MENU_DATA = {
                         },{
                             'type': 'view',
                             'name': '医馆项目',
-                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/hospital_project_list/' % HOST)
                         },{
                             'type': 'view',
                             'name': '养生小知识',
-                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/hospital_knowledge_list/' % HOST)
                         }]
                 },{
                     'name': '我的',
