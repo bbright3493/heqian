@@ -35,13 +35,13 @@
                                 <p class="mzub-te fz22 c-9a9a9a"><span
                                         class="w180 dib">就 诊 人：</span>{{ reg_info.user.nickname }}</p>
                                 <p class="mzub-te fz22 c-9a9a9a"><span
-                                        class="w180 dib">就诊时间：</span>{{ reg_info.schedule.date }}</p>
+                                        class="w180 dib">就诊时间：</span>{{ reg_info.schedule.date |date:"Y-m-d" }}</p>
                                 <div class="fz22 c-9a9a9a mzub">
                                     <p class="w180 fz22 c-9a9a9a">就诊诊所：</p>
                                     <p class="fz22 c-9a9a9a mzub-f1 mzub-te2">{{ reg_info.schedule.section.area.name }}</p>
                                 </div>
                             </div>
-                            <i class="iconfont icon-next fz22 c-9a9a9a"></i>
+{#                            <i class="iconfont icon-next fz22 c-9a9a9a"></i>#}
                         </div>
                     </li>
                 {% endfor %}
