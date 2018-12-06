@@ -154,7 +154,7 @@ class RegisterInfo(models.Model):
     register_code = models.CharField(max_length=10, verbose_name='挂号确认码')
 
     def __str__(self):
-        return '%s-挂号信息' % (self.user.name)
+        return '%s-挂号信息' % (self.user.nickname)
 
     class Meta:
         verbose_name = '挂号信息'
