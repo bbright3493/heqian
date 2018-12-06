@@ -296,12 +296,13 @@ class DoctorListView(View):
         """
         # 获取当前日期
         date = datetime.datetime.now()
-
-        str_date = date.strftime('%Y-%m-%d')
-
-        schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
+        #下午五点以后停止当天的在线挂号
+        if date.hour >= 17:
+            schedules = []
+        else:
+            schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
                                             section=section).order_by('type')
-
+        str_date = date.strftime('%Y-%m-%d')
         dates = []
         # 生成 周和日期列表
         for i in range(7):
