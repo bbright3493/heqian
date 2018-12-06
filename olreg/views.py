@@ -567,6 +567,20 @@ class HosptialKnowledgeView(View):
         return render(request, "knowledge_info.html", locals())
 
 
+class UserCenter(View):
+    @auth_openid
+    def get(self, request):
+
+        openid = request.session.get("openid", None)
+        try:
+            # 通过openid查询用户
+            user = User.objects.get(openid=openid)
+        except:
+            print("该openid无注册")
+
+        return render(request, "user_center.html", locals())
+
+
 class Developing(View):
     def get(self, request):
         return render(request, "developing.html")
