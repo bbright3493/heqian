@@ -626,3 +626,17 @@ class HosptialAddressView(View):
         hosptial_areas = HospitalArea.objects.all()
         hosp_banners = HosptialBanner.objects.all().order_by('num')
         return render(request, "hosptial_address.html", locals())
+
+
+class UserPayRecord(View):
+    def get(self, request, user_id):
+        # 通过openid查询用户
+        if user_id:
+            try:
+                user = User.objects.get(id=user_id)
+            except:
+                print("该用户不存在")
+            else:
+                records = RegRecord.objects.filter(user=user)
+
+        return render(request, "pay_record.html", locals())

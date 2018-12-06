@@ -57,5 +57,6 @@ urlpatterns = [
     url(r'^user_center/$', views.UserCenter.as_view(), name='user_center'),
     url(r'^hospital_address/$', views.HosptialAddressView.as_view(), name='hospital_address'),
     url(r'^my_reg_list/$', views.MyRegView.as_view(), name='my_reg_list'),
+    url(r'^pay_record/(?P<user_id>\d+)/$', views.UserPayRecord.as_view(), name='pay_record'),
 
 ]
