@@ -546,25 +546,25 @@ class QueryCodeView(View):
 class HosptialProjectList(View):
     def get(self, request):
         projects = HosptialProject.objects.all()
-        return render(request, "医馆项目列表.html", locals())
+        return render(request, "project_list.html", locals())
 
 
 class HosptialProjectView(View):
     def get(self, request, project_id):
         project = HosptialProject.objects.get(id=project_id)
-        return render(request, "医馆项目详情.html", locals())
+        return render(request, "project_info.html", locals())
 
 
 class HosptialKnowledgeList(View):
     def get(self, request):
         knows = HosptialKnow.objects.all()
-        return render(request, "养生知识列表.html", locals())
+        return render(request, "knowledge_list.html", locals())
 
 
 class HosptialKnowledgeView(View):
     def get(self, request, know_id):
         know = HosptialKnow.objects.get(id=know_id)
-        return render(request, "养生知识详情.html", locals())
+        return render(request, "knowledge_info.html", locals())
 
 
 class Developing(View):
