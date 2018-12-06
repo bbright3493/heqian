@@ -36,6 +36,11 @@
 					<p class="fz28 c-504d3e mzub-f1">就诊医生</p>
 					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.schedule.doctor.name }}</p>
 				</li>
+
+                <li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
+					<p class="fz28 c-504d3e mzub-f1">就诊时间</p>
+					<p class="mr10 fz28 c-8b5146 lh1">{{ user_register.schedule.date | date("Y-m-d") }}</p>
+				</li>
 				
 				<li class="bb ptb20 mzub mzub-ac bg-fff6cf plr30 bb">
 					<p class="fz28 c-504d3e mzub-f1">序号</p>
