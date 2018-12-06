@@ -463,7 +463,8 @@ class HosptialKnowView(View):
     """
     def get(self, request):
         hosptial_cul = HosptialCulture.objects.all()
-        return render(request, "hosptial_know.html", locals())
+        cul_banners = CultureBanner.objects.all()
+        return render(request, "hosptial_culture_new.html", locals())
 
 
 class DoctorIntrView(View):

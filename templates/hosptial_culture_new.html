@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="utf-8"/>
+        <!--修复ios qq浏览器 数字显示-->
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="x-rim-auto-match" content="none">
+        <meta name="viewport"
+              content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
+        {#			<link rel="stylesheet" href="css/swiper.min.css" />#}
+        <link rel="stylesheet" type="text/css" href="/static/css/swiper.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+
+        <script type="text/javascript" src="/static/js/swiper.min.js"></script>
+        <title>医馆文化</title>
+    </head>
+</head>
+
+<body>
+<div class="warp-bg">
+    <div class="swiper-container mb20">
+        <div class="swiper-wrapper">
+            {% for banner in cul_banners %}
+                <div class="swiper-slide swiper-slide-img"><img src="/media/{{ banner.image }}" alt=""/></div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="plr30">
+
+        {% for cul in hosptial_cul %}
+            <div class="bb ptb20">
+                <p class="fz30 c-5a6174 fw-b">{{ cul.title }}</p>
+
+                <p class="fz28 c66">{{ cul.content }}</p>
+
+            </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+</body>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: true, //可选选项，自动滑动
+        loop: true,
+    })
+</script>
+
+</html>

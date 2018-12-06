@@ -234,6 +234,22 @@ class HosptialCulture(models.Model):
         verbose_name_plural = verbose_name
 
 
+class CultureBanner(models.Model):
+    """
+    医馆文化轮播图
+    """
+    num = models.IntegerField(default=1, verbose_name='图片序号')
+    image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"文化配图", max_length=200, default='')
+
+    def __str__(self):
+        return "医馆文化轮播图"
+
+    class Meta:
+        verbose_name = '医馆文化轮播图'
+        verbose_name_plural = verbose_name
+
+
+
 class HosptialProject(models.Model):
     """
     医馆项目
