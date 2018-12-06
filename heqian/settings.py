@@ -307,7 +307,7 @@ MENU_DATA = {
                         },{
                             'type': 'view',
                             'name': '联系禾乾',
-                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/hospital_address/' % HOST)
                         }]
                 }
             ]}
