@@ -492,6 +492,35 @@ class RegisterHistoryView(View):
         return render(request, "register_success.html", locals())
 
 
+class MyRegView(View):
+    """
+    挂号历史记录
+    """
+    @auth_openid
+    def get(self, request):
+        openid = request.session.get("openid", None)
+        try:
+            # 通过openid查询用户
+            user = User.objects.get(openid=openid)
+        except:
+            print("该openid无注册")
+        else:
+
+            # 查询该用户的所有挂号记录
+            reg_infos = RegisterInfo.objects.filter(user=user).order_by('-schedule__date')
+
+            # date = datetime.datetime.now()
+            # #查询该用户当前预约 条件 1 ：今天之后的 2：今天未出号的
+            # today_reg_curs = RegisterInfo.objects.filter(schedule__date__day=date.day).exclude(status=3)
+            # furture = RegisterInfo.objects.filter(schedule__date__gt=date)
+            #
+            # #查询该用户历史预约 条件 1：今天之前的 2：今天已经出号的
+            # last = RegisterInfo.objects.filter(schedule__date__lt=date)
+            # today_reg_his = RegisterInfo.objects.filter(schedule__date__day=date.day).filter(status=3)
+
+        return render(request, "my_reg.html", locals())
+
+
 class QueryCodeView(View):
     """
     查询挂号序号和确认码

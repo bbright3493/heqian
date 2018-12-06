@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--修复ios qq浏览器 数字显示-->
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+		<script src="/static/js/jquery-3.3.1.min.js"></script>
+		<title>我的预约</title>
+	</head>
+
+	<body>
+		<div class="warp-bg new-bgc">
+
+{#			<div class="new-book mzub mzub-pac mb20 bgff mb20">#}
+{#				<p class="mzub-f1 new-book-tab ptb20 tx-c fz22 c-9a9a9a"><span class="active">当前预约(0)</span> </p>#}
+{#				<p class="mzub-f1 new-book-tab ptb20 tx-c fz22 c-9a9a9a"><span class="">历史预约(1)</span></p>#}
+{#			</div>#}
+			<div class="new-book-container active">
+				<div class="doc-list">
+					<ul>
+                        {% for reg_info in reg_infos %}
+						<li  class="ptb20 bgff plr30">
+							<div class="mzub muzb-ac mb20">
+								<p class="fz24 c-5a6174 mzub-f1 fw-b">预约医生：{{ reg_info.schedule.doctor.name }}</p>
+								<span class="fz24 c-9a9a9a">{{ reg_info.get_status_display }}</span>
+							</div>
+							<div class="mzub mzub-ac">
+								<div class="mzub-f1 mzub-te4 mr10">
+									<p class="mzub-te fz22 c-9a9a9a"><span class="w180 dib">就 诊 人：</span>{{ reg_info.user.nickname }}</p>
+									<p class="mzub-te fz22 c-9a9a9a"><span class="w180 dib">就诊时间：</span>{{ reg_info.register_time }}</p>
+									<div class="fz22 c-9a9a9a mzub">
+										<p class="w180 fz22 c-9a9a9a">就诊诊所：</p>
+										<p class="fz22 c-9a9a9a mzub-f1 mzub-te2">{{ reg_info.schedule.section.area.name }}</p>
+									</div>
+								</div>
+								<i class="iconfont icon-next fz22 c-9a9a9a"></i>
+							</div>
+						</li>
+                        {% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('.new-book-tab').click(function() {
+			var index = $(this).index();
+			console.log($(this))
+			$('.new-book-container').eq(index).addClass('active').siblings().removeClass('active');
+			$('.new-book-tab span').removeClass('active')
+			$(this).children('span').addClass('active');
+
+		})
+
+		function goInfo() {
+			console.log(123)
+			window.location.href = '确认挂号信息.html'
+		};
+	</script>
+
+</html>
