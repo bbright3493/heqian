@@ -54,5 +54,6 @@ urlpatterns = [
         name='hospital_knowledge_view'),
     url(r'^hospital_project_view/(?P<project_id>\d+)/$', views.HosptialProjectView.as_view(),
         name='hospital_project_view'),
+    url(r'^user_center/$', views.UserCenter.as_view(), name='user_center'),
 
 ]

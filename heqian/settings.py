@@ -303,7 +303,7 @@ MENU_DATA = {
                         {
                             'type': 'view',
                             'name': '个人中心',
-                            'url': MENU_URL % ('http://%s/wx/developing/' % HOST)
+                            'url': MENU_URL % ('http://%s/wx/user_center/' % HOST)
                         },{
                             'type': 'view',
                             'name': '联系禾乾',
