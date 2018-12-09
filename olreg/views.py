@@ -562,6 +562,7 @@ class QueryCodeView(View):
                 data_dict['doctor'] = reg_info.schedule.doctor.name
                 data_dict['type'] = reg_info.schedule.type
                 data_dict['section'] = reg_info.schedule.section.name
+                data_dict['date'] = reg_info.schedule.date.strftime("%Y-%m-%d")
                 reg_info.status = 3
                 reg_info.save()
             except:
