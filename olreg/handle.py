@@ -129,8 +129,8 @@ class WechatHanle(object):
             sync_userinfo(self.wechat, self.openid)
         response = self.wechat.response_news([
             {
-                'title': '欢迎来到禾乾医疗 点我快速挂号',
-                'picurl': 'http://www.52ky.net/static/img/headPic.jpg',
+                'title': '感谢您对于禾乾医疗的信任，禾乾医疗为您的健康保驾护航！点我快速挂号',
+                'picurl': 'http://www.52ky.net/static/img/headPic1.jpg',
                 'url': 'http://' + settings.HOST + '/wx/hospital_list/'
             }
         ])
