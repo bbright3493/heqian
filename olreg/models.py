@@ -273,7 +273,7 @@ class HosptialKnow(models.Model):
     """
     title = models.CharField(max_length=100, verbose_name='小常识标题')
     abstract = models.CharField(max_length=300, verbose_name='小常识摘要', default='')
-    content = models.CharField(max_length=5000, verbose_name='小常识内容')
+    content = models.TextField(verbose_name='小常识内容')
     image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"小常识配图", max_length=200, default='')
 
     def __str__(self):
