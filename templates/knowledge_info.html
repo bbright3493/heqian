@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+<head>
 
-		<head>
-			<meta charset="utf-8" />
-			<!--修复ios qq浏览器 数字显示-->
-			<meta name="format-detection" content="telephone=no">
-			<meta http-equiv="x-rim-auto-match" content="none">
-			<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-			<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css" />
-			<link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
-			<title>{{ know.title }}</title>
-		</head>
-	</head>
+    <head>
+        <meta charset="utf-8"/>
+        <!--修复ios qq浏览器 数字显示-->
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="x-rim-auto-match" content="none">
+        <meta name="viewport"
+              content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_856748_lgsst0sg15e.css"/>
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+        <title>{{ know.title }}</title>
+    </head>
+</head>
 
-	<body>
-		<div class="warp-bg">
-				<div class="mb20 swiper-slide-img">
-					<img src="/media/{{ know.image }}" alt=""/>
-					<p class="new-doc-pro-name mzub-te">{{ know.title }}</p>
-				</div>
-				<div class="plr30 pt100">
-                    <textarea class="fz22 c99">{{ know.content }}</textarea>
-{#				<p class="fz22 c99">{{ know.content }}</p>#}
-				</div>
-		</div>
-	</body>
-	<script>
-		var mySwiper = new Swiper('.swiper-container', {
-			autoplay: false, //可选选项，自动滑动
-			loop: false,
-		})
-	</script>
+<body>
+<div class="warp-bg">
+    <div class="mb20 swiper-slide-img">
+        <img src="/media/{{ know.image }}" alt=""/>
+        <p class="new-doc-pro-name mzub-te">{{ know.title }}</p>
+    </div>
+    <div class="plr30 pt100">
+        <textarea class="fz22 c99"
+                  style="BORDER-BOTTOM: 0px solid; BORDER-LEFT: 0px solid; BORDER-RIGHT: 0px solid; BORDER-TOP: 0px solid;width:500px;height:500px;"
+                  disabled="disabled">{{ know.content }}</textarea>
+        {#				<p class="fz22 c99">{{ know.content }}</p>#}
+    </div>
+</div>
+</body>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: false, //可选选项，自动滑动
+        loop: false,
+    })
+</script>
 
 </html>
