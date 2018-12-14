@@ -356,7 +356,7 @@ class AjaxDoctorList(View):
                     dict_data['img_url'] = str(sch.doctor.image)
                     dict_data['sch_id'] = sch.id
                     dict_data['type'] = sch.get_type_display()
-                    data_list.append(dict_data)
+                    data_list.append(dict_data.copy())
 
         json_data = json.dumps(data_list)
 
