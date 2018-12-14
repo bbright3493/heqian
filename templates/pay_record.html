@@ -16,29 +16,40 @@
 <body>
 <div class="warp pt30 bg-f4e5bc">
     <ul class="department-list">
-        {% for record in records %}
+        {% if records %}
+            {% for record in records %}
+                <li class="bb ptb20 bg-fff6cf mb20 plr30">
+
+                    <div class="mzub-f1">
+                        <p class="fz30 c-504d3e">类型：挂号消费</p>
+                        <p class="fz24 c-9f957c">金额：{{ record.schedule.doctor.price }}</p>
+                        <p class="fz24 c-9f957c">时间：{{ record.register_time }}</p>
+                        {#                    {% if record.status %}#}
+                        {#                        <p class="fz24 c-9f957c">状态：已支付</p>#}
+                        {#                    {% else %}#}
+                        {#                        <p class="fz24 c-9f957c">状态：未支付</p>#}
+                        {#                    {% endif %}#}
+                    </div>
+                    <div class="mzub mzub-ac">
+                        <!--<div class="mzub mzub-pac"><i class="iconfont icon-shenqingchenggonggougouicon fz30 c-8b5146 mr10"></i></div>-->
+
+                        <p class="mr10 fz24 c-504d3e"></p>
+                    </div>
+                    {#						<div class="mzub mzub-pac"><i class="iconfont icon-next fz24 c-504d3e"></i></div>#}
+
+
+                </li>
+            {% endfor %}
+        {% else %}
             <li class="bb ptb20 bg-fff6cf mb20 plr30">
 
                 <div class="mzub-f1">
-                    <p class="fz30 c-504d3e">类型：{{ record.get_recharge_type_display() }}</p>
-                    <p class="fz24 c-9f957c">金额：{{ record.money }}</p>
-                    <p class="fz24 c-9f957c">时间：{{ record.add_time }}</p>
-{#                    {% if record.status %}#}
-{#                        <p class="fz24 c-9f957c">状态：已支付</p>#}
-{#                    {% else %}#}
-{#                        <p class="fz24 c-9f957c">状态：未支付</p>#}
-{#                    {% endif %}#}
+                    <p class="fz30 c-504d3e">您好，当前没有支付记录</p>
+
                 </div>
-                <div class="mzub mzub-ac">
-                    <!--<div class="mzub mzub-pac"><i class="iconfont icon-shenqingchenggonggougouicon fz30 c-8b5146 mr10"></i></div>-->
-
-                    <p class="mr10 fz24 c-504d3e"></p>
-                </div>
-                {#						<div class="mzub mzub-pac"><i class="iconfont icon-next fz24 c-504d3e"></i></div>#}
-
-
             </li>
-        {% endfor %}
+
+        {% endif %}
     </ul>
 
 </div>

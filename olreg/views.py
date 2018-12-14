@@ -300,8 +300,13 @@ class DoctorListView(View):
         if date.hour >= 17:
             schedules = []
         else:
-            schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
+            if date.hour < 11:
+                schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
                                             section=section).order_by('type')
+            else:#上午11点以后 停止当天线上挂号
+                schedules = Schedule.objects.filter(date__day=date.day, date__month=date.month, date__year=date.year,
+                                                    section=section).exclude(type=1).order_by('type')
+
         str_date = date.strftime('%Y-%m-%d')
         dates = []
         # 生成 周和日期列表
@@ -329,21 +334,29 @@ class AjaxDoctorList(View):
         dict_data = {}
         data_list = []
         try:
-            schedules = Schedule.objects.filter(date__day=day, date__month=date.month, date__year=date.year,
+            if date.day == day and date.hour >= 17:
+                schedules = []
+            else:
+                schedules = Schedule.objects.filter(date__day=day, date__month=date.month, date__year=date.year,
                                                 section=section).order_by('type')
+
         except:
             dict_data['status'] = "fail"
             data_list.append(dict_data)
         else:
             for sch in schedules:
-                dict_data['status'] = "success"
-                dict_data['name'] = sch.doctor.name
-                dict_data['price'] = sch.doctor.price
-                dict_data['leave_num'] = sch.leave_num
-                dict_data['img_url'] = str(sch.doctor.image)
-                dict_data['sch_id'] = sch.id
-                dict_data['type'] = sch.get_type_display()
-                data_list.append(dict_data)
+                #当天上午排班到11点截止线上挂号
+                if sch.date.day == date.day and sch.type == 1 and date.hour >= 11:
+                    pass
+                else:
+                    dict_data['status'] = "success"
+                    dict_data['name'] = sch.doctor.name
+                    dict_data['price'] = sch.doctor.price
+                    dict_data['leave_num'] = sch.leave_num
+                    dict_data['img_url'] = str(sch.doctor.image)
+                    dict_data['sch_id'] = sch.id
+                    dict_data['type'] = sch.get_type_display()
+                    data_list.append(dict_data)
 
         json_data = json.dumps(data_list)
 
@@ -638,6 +651,6 @@ class UserPayRecord(View):
             except:
                 print("该用户不存在")
             else:
-                records = RegRecord.objects.filter(user=user)
+                records = RegisterInfo.objects.filter(user=user).order_by('-schedule__date')
 
         return render(request, "pay_record.html", locals())
