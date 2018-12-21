@@ -356,7 +356,7 @@ class AjaxDoctorList(View):
                     dict_data['img_url'] = str(sch.doctor.image)
                     dict_data['sch_id'] = sch.id
                     dict_data['type'] = sch.get_type_display()
-                    data_list.append(dict_data.copy())
+                    data_list.append(dict_data.copy())#坑 因为字典是个对象，字典改变后同样会影响之前存储在list里面的值，所以要这样
 
         json_data = json.dumps(data_list)
 
@@ -467,6 +467,7 @@ class HosptialIntrView(View):
         hosptial_intr = HosptialIntroduce.objects.all().first()
         hosptial_areas = HospitalArea.objects.all()
         hosp_banners = HosptialBanner.objects.all().order_by('num')
+        activates = PreferentialActivities.objects.filter(activate_status=1)
         return render(request, "hosptial_intr.html", locals())
 
 

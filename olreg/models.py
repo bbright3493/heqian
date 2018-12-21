@@ -1,6 +1,8 @@
 from django.db import models
 from user.models import User
 import django.utils.timezone as timezone
+
+
 # Create your models here.
 
 class AccessToken(models.Model):
@@ -103,7 +105,7 @@ class DoctorSection(models.Model):
     doctor = models.ForeignKey(DoctorInfo, verbose_name='医生')
 
     def __str__(self):
-        return  '%s-%s'%(self.section.name, self.doctor.name)
+        return '%s-%s' % (self.section.name, self.doctor.name)
 
     class Meta:
         verbose_name = '医生科室关系'
@@ -114,7 +116,7 @@ class Schedule(models.Model):
     """
     排班信息
     """
-    date = models.DateTimeField(verbose_name='排班日期', default = timezone.now)
+    date = models.DateTimeField(verbose_name='排班日期', default=timezone.now)
     section = models.ForeignKey(SectionInfo, verbose_name='排班科室')
     doctor = models.ForeignKey(DoctorInfo, verbose_name='排班医生')
     register_num = models.IntegerField(default=20, verbose_name='预留号数')
@@ -127,9 +129,8 @@ class Schedule(models.Model):
     )
     type = models.SmallIntegerField(choices=schedule_type, default=3, verbose_name='排班类型')
 
-
     def __str__(self):
-        return  '%s-%s'%(self.doctor.name, str(self.date))
+        return '%s-%s' % (self.doctor.name, str(self.date))
 
     class Meta:
         verbose_name = '排班信息'
@@ -190,17 +191,40 @@ class HosptialIntroduce(models.Model):
     doctor_intr = models.CharField(max_length=500, verbose_name='医师资源', default='')
     section_intr = models.CharField(max_length=500, verbose_name='特色科室', default='')
     medicinal_intr = models.CharField(max_length=500, verbose_name='药材介绍', default='')
-    server_intr = models.CharField(max_length=500, verbose_name='服务介绍',default='')
-    work_time = models.CharField(max_length=300, verbose_name='营业时间', default='',help_text='如 9:00---19:00')
+    server_intr = models.CharField(max_length=500, verbose_name='服务介绍', default='')
+    work_time = models.CharField(max_length=300, verbose_name='营业时间', default='', help_text='如 9:00---19:00')
     contract_intr = models.CharField(max_length=100, verbose_name='联系电话', default='')
     work_phone = models.CharField(max_length=50, verbose_name='值班电话', default='')
-    #image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
+
+    # image = models.ImageField(upload_to="hosptial/%Y/%m", verbose_name=u"介绍配图", max_length=200, default='')
 
     def __str__(self):
         return "医院介绍"
 
     class Meta:
         verbose_name = '医院介绍'
+        verbose_name_plural = verbose_name
+
+
+class PreferentialActivities(models.Model):
+    """
+    优惠活动
+    """
+    status = (
+        (1, "活动进行中"),
+        (2, "活动已过期"),
+        (3, "活动未开始")
+    )
+    intr = models.CharField(max_length=2000, verbose_name='活动介绍', default='')
+    activate_time = models.DateTimeField(auto_now_add=True, verbose_name='活动开始时间', )
+    activate_status = models.IntegerField(verbose_name='活动类型', default=1, choices=status,
+                                          help_text="1 活动进行中 2 活动已过期 3 活动未开始")
+
+    def __str__(self):
+        return "优惠活动"
+
+    class Meta:
+        verbose_name = '优惠活动'
         verbose_name_plural = verbose_name
 
 
@@ -247,7 +271,6 @@ class CultureBanner(models.Model):
     class Meta:
         verbose_name = '医馆文化轮播图'
         verbose_name_plural = verbose_name
-
 
 
 class HosptialProject(models.Model):
