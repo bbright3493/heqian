@@ -327,9 +327,17 @@ class DoctorListView(View):
 
 class AjaxDoctorList(View):
     def post(self, request):
+        data_str = request.POST.get('data_str', 0)
+
+        # year = request.POST.get('year', 0)
+        # month = request.POST.get('month', 0)
         day = int(request.POST.get('day', 0))
         section = request.POST.get('section', 0)
         date = datetime.datetime.now()
+
+        cur_data_list = data_str.split('-')
+        year = cur_data_list[0]
+        month = cur_data_list[1]
 
         dict_data = {}
         data_list = []
@@ -337,7 +345,7 @@ class AjaxDoctorList(View):
             if date.day == day and date.hour >= 17:
                 schedules = []
             else:
-                schedules = Schedule.objects.filter(date__day=day, date__month=date.month, date__year=date.year,
+                schedules = Schedule.objects.filter(date__day=day, date__month=month, date__year=year,
                                                 section=section).order_by('type')
 
         except:

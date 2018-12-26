@@ -173,7 +173,7 @@
 
         $.ajax({
             type: "POST",
-            data: {'day': day, 'section': {{ section }}},
+            data: {'day': day, 'data_str': data_str, 'section': {{ section }}},
             url: "{{ reverse('ajax_doctor')}}", //后台处理函数的url 这里用的是static url 需要与urls.py中的name一致,或者直接写http地址
             cache: false,
             beforeSend: function (xhr, settings) {
