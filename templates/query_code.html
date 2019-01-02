@@ -100,8 +100,14 @@
                     else
                         reg_time = '上午'
                     alert('查询到：' + '就诊人：' + ret.name + '-' + '就诊医生' + ret.doctor + '-' + '就诊时间' + ret.date + '-' + '就诊序号' + ret.num);
-                    alert('请使用挂号系统出号')
-
+                    if(ret.reg_status==3)
+                        alert("该号已出，请勿重复出号")
+                    else{
+                        if(ret.date_status==1)
+                            alert("是当天的有效号，请使用挂号系统出号")
+                        else
+                            alert("不是当天的号，请按照时间来就诊")
+                    }
 
                 },
                 error: function () {

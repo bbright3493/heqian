@@ -574,18 +574,24 @@ class QueryCodeView(View):
             data_dict['leave_num'] = schedule.register_num - leave_num + 1
         #根据挂号确认码查询并修改挂号状态
         elif fun_code == 3:
+            date = datetime.datetime.now()
             data_dict['status'] = 'success'
             reg_code = request.POST.get('reg_code', 0)
             try:
                 reg_info = RegisterInfo.objects.get(register_code=reg_code)
                 data_dict['status'] = 'success'
+                data_dict['reg_status'] = reg_info.status
                 data_dict['name'] = reg_info.user.nickname
                 data_dict['num'] = reg_info.num
                 data_dict['doctor'] = reg_info.schedule.doctor.name
                 data_dict['type'] = reg_info.schedule.type
                 data_dict['section'] = reg_info.schedule.section.name
                 data_dict['date'] = reg_info.schedule.date.strftime("%Y-%m-%d")
-                reg_info.status = 3
+                if date.day == reg_info.schedule.date.day:
+                    data_dict['date_status'] = 1
+                    reg_info.status = 3
+                else:
+                    data_dict['date_status'] = 2
                 reg_info.save()
             except:
                 data_dict['status'] = 'fail'
