@@ -78,8 +78,15 @@
                                 WeixinJSBridge.log(res.err_msg);
                                 if (res.err_msg == "get_brand_wcpay_request:ok") {
                                     window.location.href = "{{ reverse('register_success', kwargs={'user_id': user.id, 'schedule_id':schedule.id}) }}";
-                                } else {
-                                    alert("充值已取消");
+                                }
+                                else if(res.err_msg == "get_brand_wcpay_request:cancel"){
+                                    alert("取消当前支付");
+                                }
+                                else if(res.err_msg == "get_brand_wcpay_request:fail"){
+                                    alert("支付失败，请重新支付");
+                                }
+                                else {
+                                    alert("支付失败，请重新支付");
                                 }
                             }
                     );
