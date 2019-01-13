@@ -444,7 +444,7 @@ class RegisterSuccessView(View):
 
         # return HttpResponse(response, content_type="application/xml")
 
-        return render(request, "register_success.html", locals())
+        return render(request, "user_register_success.html", locals())
 
 
 class RegisterHistoryListView(View):
@@ -511,7 +511,7 @@ class RegisterHistoryView(View):
     def get(self, request, register_id):
         # 查询挂号记录
         user_register = RegisterInfo.objects.get(id=register_id)
-        return render(request, "register_success.html", locals())
+        return render(request, "user_register_success.html", locals())
 
 
 class MyRegView(View):
