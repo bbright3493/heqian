@@ -587,6 +587,7 @@ class QueryCodeView(View):
                 data_dict['type'] = reg_info.schedule.type
                 data_dict['section'] = reg_info.schedule.section.name
                 data_dict['date'] = reg_info.schedule.date.strftime("%Y-%m-%d")
+                data_dict['reg_time'] = reg_info.register_time.strftime("%Y-%m-%d")
                 if date.day == reg_info.schedule.date.day:
                     data_dict['date_status'] = 1
                     reg_info.status = 3
