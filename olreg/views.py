@@ -412,39 +412,51 @@ class RegisterSuccessView(View):
     """
 
     def get(self, request, user_id, schedule_id):
+
         random_str = []
         # 查询用户信息
         user = User.objects.get(id=user_id)
-        # 查询排班
-        schedule = Schedule.objects.get(id=schedule_id)
-        # 查询可用序号
-        reg_num = schedule.register_num - schedule.leave_num + 1
-        # 修改排班信息 剩余号码减1
-        schedule.leave_num -= 1
-        schedule.save()
-        # 生成挂号确认码 序号+上午或下午号+排班日期+随机码
-        for i in range(3):
-            random_str.append(random.choice(seed))
-        # salt = str(reg_num) + random_str
-        salt = ''.join(random_str)
-        salt = str(reg_num) + str(schedule.type) + str(schedule.date.day) + salt
-        print(salt)
-        # 保存记录
-        user_register = RegisterInfo.objects.create(user=user, schedule=schedule)
-        # user_register.user = user
-        user_register.schedule = schedule
-        user_register.num = reg_num
-        user_register.status = 2
-        user_register.register_code = salt
-        user_register.save()
 
-        wechat = MyWechat.get_basic_obj(request)
+        # 获取该用户最新订单记录
+        user_record = RegRecord.objects.filter(user=user_id).last()
+        # 确认该订单刚支付，未产生挂号信息
+        if not user_record.status:
+            user_record.status = True
+            user_record.save()
 
-        response = wechat.send_text_message(user.openid, "恭喜挂号成功 请凭挂号码%s到收费处取号 如需查看挂号详情 请至公众号菜单'看病挂号'->'我的挂号'下进行查看" % (salt))
+            # 查询排班
+            schedule = Schedule.objects.get(id=schedule_id)
+            # 查询可用序号
+            reg_num = schedule.register_num - schedule.leave_num + 1
+            # 修改排班信息 剩余号码减1
+            schedule.leave_num -= 1
+            schedule.save()
+            # 生成挂号确认码 序号+上午或下午号+排班日期+随机码
+            for i in range(3):
+                random_str.append(random.choice(seed))
+            # salt = str(reg_num) + random_str
+            salt = ''.join(random_str)
+            salt = str(reg_num) + str(schedule.type) + str(schedule.date.day) + salt
+            print(salt)
+            # 保存记录
+            user_register = RegisterInfo.objects.create(user=user, schedule=schedule)
+            # user_register.user = user
+            user_register.schedule = schedule
+            user_register.num = reg_num
+            user_register.status = 2
+            user_register.register_code = salt
+            user_register.save()
+
+            wechat = MyWechat.get_basic_obj(request)
+
+            response = wechat.send_text_message(user.openid, "恭喜挂号成功 请凭挂号码%s到收费处取号 如需查看挂号详情 请至公众号菜单'看病挂号'->'我的挂号'下进行查看" % (salt))
+            return render(request, "user_register_success.html", locals())
+        else:
+            return render(request, "user_register_success.html", locals())
 
         # return HttpResponse(response, content_type="application/xml")
 
-        return render(request, "user_register_success.html", locals())
+
 
 
 class RegisterHistoryListView(View):
